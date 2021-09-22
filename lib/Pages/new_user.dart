@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:oblack_tech/Widgets/buttons.dart';
 
@@ -7,9 +8,9 @@ class NewUsers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.brown[400],
+        backgroundColor: Colors.brown[200],
         body: Padding(
-          padding: const EdgeInsets.all(35.0),
+          padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 60),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -19,11 +20,11 @@ class NewUsers extends StatelessWidget {
                 children: [
                   SButton(
                     onPressed: () {},
-                    pIcons: Icons.settings,
+                    pIcons: CupertinoIcons.home,
                   ),
                   SButton(
                     onPressed: () {},
-                    pIcons: Icons.settings,
+                    pIcons: Icons.chevron_left,
                   ),
                   SButton(
                     onPressed: () {},
@@ -33,11 +34,106 @@ class NewUsers extends StatelessWidget {
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     height: 300,
-                    width: 300,
-                    color: Colors.white54,
+                    width: 400,
+                    color: Colors.brown[500],
+                    child: Center(
+                      child: ConstrainedBox(
+                        constraints:
+                            const BoxConstraints(maxHeight: 250, maxWidth: 350),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Container(
+                                height: 80,
+                                width: 100,
+                                color: Colors.brown[200],
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Icon(Icons.person),
+                                    SizedBox(),
+                                    Text('add photo'),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const Text('name'),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 30,
+                                  width: 100,
+                                  color: Colors.brown[200],
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  height: 20,
+                                  width: 20,
+                                  color: Colors.brown[200],
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const Text('male'),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  height: 20,
+                                  width: 20,
+                                  color: Colors.brown[200],
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const Text('female')
+                              ],
+                            ),
+                            const Text('name'),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 30,
+                                  width: 125,
+                                  color: Colors.brown[200],
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  height: 30,
+                                  width: 125,
+                                  color: Colors.brown[200],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 260,
+                                  color: Colors.brown[200],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                   LButton(
                     onTap: () {},

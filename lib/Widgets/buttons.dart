@@ -9,8 +9,8 @@ class SButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
-      width: 60,
+      height: 45,
+      width: 45,
       color: Colors.redAccent,
       child: Center(
         child: IconButton(
