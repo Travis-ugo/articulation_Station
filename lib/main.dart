@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'Pages/new_user.dart';
+import 'Pages/user_clipboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,13 +18,13 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.landscapeRight,
     ]);
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Oblack.Tech',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.brown,
+        primaryColor: const Color(0xFFC19151),
       ),
-      home: const NewUsers(),
+      home: const SelectedUserClipBoard(),
     );
   }
 }
-
-// h

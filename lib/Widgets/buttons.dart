@@ -11,7 +11,7 @@ class SButton extends StatelessWidget {
     return Container(
       height: 45,
       width: 45,
-      color: Colors.redAccent,
+      color: Color(0xFFB20000),
       child: Center(
         child: IconButton(
           onPressed: onPressed,
@@ -39,7 +39,7 @@ class LButton extends StatelessWidget {
       child: Container(
         height: 40,
         width: 100,
-        color: Colors.redAccent,
+        color: const Color(0xFFB20000),
         child: Center(
           child: Text(
             text,
@@ -61,7 +61,7 @@ class DButton extends StatelessWidget {
       child: Container(
         height: 60,
         width: 60,
-        color: Colors.greenAccent,
+        color: const Color(0xFF00FF0C),
         child: const Center(
             child: Text(
           'Done',
