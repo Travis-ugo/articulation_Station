@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'Widgets/sound_button.dart';
+import 'Pages/matching_cards.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,9 +24,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.brown,
         primaryColor: const Color(0xFFC19151),
       ),
-      home: const SoundButton(
-        width: 200,
-      ),
+      home: const Matchingcards(),
     );
   }
 }

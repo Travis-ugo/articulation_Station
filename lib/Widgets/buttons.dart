@@ -11,7 +11,7 @@ class SButton extends StatelessWidget {
     return Container(
       height: 45,
       width: 45,
-      color: Color(0xFFB20000),
+      color: const Color(0xFFB20000),
       child: Center(
         child: IconButton(
           onPressed: onPressed,
@@ -37,8 +37,8 @@ class LButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 40,
-        width: 100,
+        height: 30,
+        width: 80,
         color: const Color(0xFFB20000),
         child: Center(
           child: Text(
@@ -59,8 +59,8 @@ class DButton extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(100),
       child: Container(
-        height: 60,
-        width: 60,
+        height: 45,
+        width: 45,
         color: const Color(0xFF00FF0C),
         child: const Center(
             child: Text(
