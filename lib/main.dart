@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'Pages/user_clipboard.dart';
+import 'Widgets/sound_button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +24,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.brown,
         primaryColor: const Color(0xFFC19151),
       ),
-      home: const SelectedUserClipBoard(),
+      home: const SoundButton(
+        width: 200,
+      ),
     );
   }
 }
