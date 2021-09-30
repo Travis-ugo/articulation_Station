@@ -39,48 +39,37 @@ class CustomImages extends StatelessWidget {
                 Container(
                   height: 300,
                   width: 450,
-                  color: const Color(0xFFE9CDA6),
-                  child: Center(
-                    child: ConstrainedBox(
-                      constraints:
-                          const BoxConstraints(maxHeight: 270, maxWidth: 400),
-                      child: Container(
-                        height: 280,
-                        width: 420,
-                        color: const Color(0xFF7E4900),
-                        child: Center(
-                          child: ConstrainedBox(
-                            constraints: const BoxConstraints(
-                                maxHeight: 250, maxWidth: 350),
-                            child: GridView.count(
-                              crossAxisCount: 3,
-                              crossAxisSpacing: 4.0,
-                              mainAxisSpacing: 8.0,
-                              children: List.generate(
-                                9,
-                                (index) {
-                                  return Center(
-                                    child: Column(children: [
-                                      Container(
-                                        height: 100,
-                                        width: 100,
-                                        color: Colors.white,
-                                      ),
-                                      const Text(
-                                        'picture',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ]),
-                                  );
-                                },
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF7E4900),
+                    border: Border.all(
+                      width: 25,
+                      color: const Color(0xFFE9CDA6),
+                    ),
+                  ),
+                  child: GridView.count(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 4.0,
+                    mainAxisSpacing: 8.0,
+                    children: List.generate(
+                      9,
+                      (index) {
+                        return Column(
+                          children: [
+                            Container(
+                              height: 100,
+                              width: 100,
+                              color: Colors.white,
+                            ),
+                            const Text(
+                              'picture',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
                               ),
                             ),
-                          ),
-                        ),
-                      ),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ),

@@ -21,7 +21,6 @@ class ReviewInfo extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SButton(
                         onPressed: () {},
@@ -32,71 +31,55 @@ class ReviewInfo extends StatelessWidget {
                         onPressed: () {},
                         pIcons: Icons.chevron_left,
                       ),
-                      const SizedBox(height: 100),
+                      const SizedBox(height: 20),
                       SButton(
                         onPressed: () {},
                         pIcons: Icons.settings,
                       ),
                     ],
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 300,
-                        width: 380,
+                  Container(
+                    height: 300,
+                    width: 450,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF7E4900),
+                      border: Border.all(
+                        width: 25,
                         color: const Color(0xFFE9CDA6),
-                        child: Center(
-                          child: ConstrainedBox(
-                            constraints: const BoxConstraints(
-                              maxHeight: 260,
-                              maxWidth: 330,
-                            ),
-                            child: Container(
-                              height: 280,
-                              width: 420,
-                              color: const Color(0xFF7E4900),
-                              padding: const EdgeInsets.all(20),
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Container(
-                                      height: 100,
-                                      width: 100,
-                                      padding: const EdgeInsets.all(10),
-                                      color: const Color(0xFFC19151),
-                                      child: const Center(
-                                          child: Text(
-                                        'using our app',
-                                        style: TextStyle(
-                                          color: Color(0xFF7E4900),
-                                        ),
-                                      )),
-                                    ),
-                                    Container(
-                                      height: 100,
-                                      width: 100,
-                                      padding: const EdgeInsets.all(10),
-                                      color: const Color(0xFFC19151),
-                                      child: const Center(
-                                          child: Text(
-                                        'Credits',
-                                        style: TextStyle(
-                                          color: Color(0xFF7E4900),
-                                        ),
-                                      )),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
                       ),
-                    ],
+                    ),
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 100,
+                          padding: const EdgeInsets.all(10),
+                          color: const Color(0xFFC19151),
+                          child: const Center(
+                              child: Text(
+                            'using our app',
+                            style: TextStyle(
+                              color: Color(0xFF7E4900),
+                            ),
+                          )),
+                        ),
+                        Container(
+                          height: 100,
+                          width: 100,
+                          padding: const EdgeInsets.all(10),
+                          color: const Color(0xFFC19151),
+                          child: const Center(
+                              child: Text(
+                            'Credits',
+                            style: TextStyle(
+                              color: Color(0xFF7E4900),
+                            ),
+                          )),
+                        ),
+                      ],
+                    ),
                   ),
                   DButton(key: key)
                 ],

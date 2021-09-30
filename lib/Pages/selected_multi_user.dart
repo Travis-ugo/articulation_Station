@@ -38,52 +38,51 @@ class SelectedMutiUser extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    height: 280,
+                    height: 300,
                     width: 450,
-                    color: Colors.brown[200],
-                    child: Center(
-                      child: Container(
-                        height: 250,
-                        width: 400,
-                        color: const Color(0xFFC19151),
-                        child: GridView.count(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 0.0,
-                          mainAxisSpacing: 0.0,
-                          children: List.generate(
-                            9,
-                            (index) {
-                              return Row(
-                                children: [
-                                  Container(
-                                    height: 60,
-                                    width: 60,
-                                    color: const Color(0xFFFFFFFF),
-                                    // color: Colors.transparent,
-                                    child: Column(
-                                      children: const [
-                                        CircleAvatar(
-                                          backgroundColor: Colors.white,
-                                          radius: 12,
-                                        ),
-                                        SizedBox(height: 5),
-                                        Text(
-                                          'mac',
-                                          style: TextStyle(fontSize: 12),
-                                        ),
-                                      ],
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF7E4900),
+                      border: Border.all(
+                        width: 25,
+                        color: const Color(0xFFE9CDA6),
+                      ),
+                    ),
+                    child: GridView.count(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 0.0,
+                      mainAxisSpacing: 0.0,
+                      children: List.generate(
+                        9,
+                        (index) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 60,
+                                width: 60,
+                                color: const Color(0xFFFFFFFF),
+                                child: Column(
+                                  children: const [
+                                    CircleAvatar(
+                                      backgroundColor: Colors.white,
+                                      radius: 12,
                                     ),
-                                  ),
-                                  Container(
-                                    height: 60,
-                                    width: 60,
-                                    color: const Color(0xFF7E4900),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                        ),
+                                    SizedBox(height: 5),
+                                    Text(
+                                      'mac',
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                height: 60,
+                                width: 60,
+                                color: const Color(0xFFBB863B),
+                              ),
+                            ],
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -92,9 +91,15 @@ class SelectedMutiUser extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                          height: 140,
-                          width: 380,
-                          color: Colors.brown[200],
+                          height: 150,
+                          width: 350,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF7E4900),
+                            border: Border.all(
+                              width: 25,
+                              color: const Color(0xFFE9CDA6),
+                            ),
+                          ),
                           child: Center(
                             child: Container(
                               height: 100,

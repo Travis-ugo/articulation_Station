@@ -38,114 +38,101 @@ class ClipBoard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    height: 250,
-                    width: 350,
-                    color: Colors.brown[200],
-                    child: Center(
-                      child: ConstrainedBox(
-                        constraints:
-                            const BoxConstraints(maxHeight: 250, maxWidth: 350),
-                        child: Container(
-                          height: 220,
-                          width: 320,
-                          color: const Color(0xFF7E4900),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    height: 85,
-                                    width: 110,
-                                    color: const Color(0xFFC19151),
-                                    child: const Center(
-                                      child: Text(
-                                        'Initail',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 85,
-                                    width: 110,
-                                    color: const Color(0xFFC19151),
-                                    child: const Center(
-                                      child: Text(
-                                        'Initail',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(),
-                              Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    height: 85,
-                                    width: 110,
-                                    color: const Color(0xFFC19151),
-                                    child: const Center(
-                                      child: Text(
-                                        'Initail',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 85,
-                                    width: 110,
-                                    color: const Color(0xFFC19151),
-                                    child: const Center(
-                                      child: Text(
-                                        'Initail',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                    height: 300,
+                    width: 450,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF7E4900),
+                      border: Border.all(
+                        width: 25,
+                        color: const Color(0xFFE9CDA6),
                       ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: 85,
+                              width: 110,
+                              color: const Color(0xFFC19151),
+                              child: const Center(
+                                child: Text(
+                                  'Initail',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: 85,
+                              width: 110,
+                              color: const Color(0xFFC19151),
+                              child: const Center(
+                                child: Text(
+                                  'Initail',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: 85,
+                              width: 110,
+                              color: const Color(0xFFC19151),
+                              child: const Center(
+                                child: Text(
+                                  'Initail',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: 85,
+                              width: 110,
+                              color: const Color(0xFFC19151),
+                              child: const Center(
+                                child: Text(
+                                  'Initail',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(height: 20),
                   Container(
-                    height: 140,
-                    width: 280,
-                    color: Colors.brown[200],
-                    child: Center(
-                      child: ConstrainedBox(
-                        constraints:
-                            const BoxConstraints(maxHeight: 100, maxWidth: 250),
-                        child: Container(
-                          height: 200,
-                          width: 300,
-                          color: const Color(0xFF7E4900),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Row(
-                                children: const [
-                                  CircleAvatar(backgroundColor: Colors.white),
-                                  SizedBox(width: 10),
-                                  CircleAvatar(backgroundColor: Colors.white),
-                                  SizedBox(width: 10),
-                                  CircleAvatar(backgroundColor: Colors.white),
-                                  SizedBox(width: 10),
-                                  CircleAvatar(backgroundColor: Colors.white),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                    height: 150,
+                    width: 350,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF7E4900),
+                      border: Border.all(
+                        width: 25,
+                        color: const Color(0xFFE9CDA6),
                       ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          children: const [
+                            CircleAvatar(backgroundColor: Colors.white),
+                            SizedBox(width: 10),
+                            CircleAvatar(backgroundColor: Colors.white),
+                            SizedBox(width: 10),
+                            CircleAvatar(backgroundColor: Colors.white),
+                            SizedBox(width: 10),
+                            CircleAvatar(backgroundColor: Colors.white),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(height: 20),

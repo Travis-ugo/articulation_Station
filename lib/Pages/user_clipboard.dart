@@ -38,45 +38,39 @@ class SelectedUserClipBoard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    height: 280,
+                    height: 300,
                     width: 450,
-                    color: Colors.brown[200],
-                    child: Center(
-                      child: Container(
-                        height: 250,
-                        width: 400,
-                        color: const Color(0xFFC19151),
-                        child: const DataTables(),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFC19151),
+                      border: Border.all(
+                        width: 25,
+                        color: const Color(0xFFE9CDA6),
                       ),
                     ),
+                    child: const DataTables(),
                   ),
                   const SizedBox(height: 20),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                          height: 140,
-                          width: 380,
-                          color: Colors.brown[200],
-                          child: Center(
-                            child: Container(
-                              height: 100,
-                              width: 320,
-                              color: const Color(0xFF7E4900),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: const [
-                                  SizedBox(width: 10),
-                                  CircleAvatar(backgroundColor: Colors.white),
-                                  SizedBox(width: 10),
-                                  CircleAvatar(backgroundColor: Colors.white),
-                                  SizedBox(width: 10),
-                                  CircleAvatar(backgroundColor: Colors.white),
-                                  SizedBox(width: 10),
-                                  CircleAvatar(backgroundColor: Colors.white),
-                                ],
-                              ),
+                          height: 150,
+                          width: 350,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF7E4900),
+                            border: Border.all(
+                              width: 25,
+                              color: const Color(0xFFE9CDA6),
                             ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: const [
+                              CircleAvatar(backgroundColor: Colors.white),
+                              CircleAvatar(backgroundColor: Colors.white),
+                              CircleAvatar(backgroundColor: Colors.white),
+                              CircleAvatar(backgroundColor: Colors.white),
+                            ],
                           )),
                       const SizedBox(height: 20),
                       Row(
