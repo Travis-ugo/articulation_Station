@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'Pages/custom_images.dart';
-import 'Widgets/frame.dart';
+import 'Utils/record_functions.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.brown,
         primaryColor: const Color(0xFFC19151),
       ),
-      home: const Frame(),
+      home: const AudioRecorder(),
     );
   }
 }

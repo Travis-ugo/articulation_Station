@@ -1,5 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.oblack_tech">
+
+
+   <uses-permission android:name="android.permission.RECORD_AUDIO" />
+   <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+   <!-- yes oo i touch this place in case i forget-->
    <application
         android:label="oblack_tech"
         android:icon="@mipmap/ic_launcher">
