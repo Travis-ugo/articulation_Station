@@ -73,3 +73,7 @@ class DButton extends StatelessWidget {
     );
   }
 }
+
+class Kolor {
+  Color backGroundColors = const Color(0xFFC19151);
+}
