@@ -29,7 +29,13 @@ class SoundPlayer {
 
   Future init() async {
     _audioPlayer = FlutterSoundPlayer();
-    await _audioPlayer!.openAudioSession();
+    await _audioPlayer!.openAudioSession(
+      withUI: true,
+
+      /// Play data from a track specification and display controls on the lock screen or an Apple Watch.
+      ///
+      /// The Audio Session must have been open with the parameter `withUI`.
+    );
   }
 
   void dispose() {

@@ -32,10 +32,7 @@ class SelectSound extends StatelessWidget {
                         pIcons: Icons.chevron_left,
                       ),
                       const SizedBox(height: 20),
-                      SButton(
-                        onPressed: () {},
-                        pIcons: Icons.settings,
-                      ),
+                      const SettingsButton(),
                     ],
                   ),
                   Container(

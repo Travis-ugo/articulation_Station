@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'Utils/record_functions.dart';
-import 'Utils/timer_with_hooks.dart';
 
 void main() {
   runApp(const MyApp());

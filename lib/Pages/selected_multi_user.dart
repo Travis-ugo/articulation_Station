@@ -26,10 +26,7 @@ class SelectedMutiUser extends StatelessWidget {
                   onPressed: () {},
                   pIcons: Icons.chevron_left,
                 ),
-                SButton(
-                  onPressed: () {},
-                  pIcons: Icons.settings,
-                ),
+                const SettingsButton(),
               ],
             ),
             SingleChildScrollView(

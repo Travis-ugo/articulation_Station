@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oblack_tech/Pages/settings.dart';
 
 class SButton extends StatelessWidget {
   const SButton({Key? key, required this.pIcons, required this.onPressed})
@@ -17,6 +18,35 @@ class SButton extends StatelessWidget {
           onPressed: onPressed,
           icon: Icon(
             pIcons,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SettingsButton extends StatelessWidget {
+  const SettingsButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 45,
+      width: 45,
+      color: const Color(0xFFB20000),
+      child: Center(
+        child: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Settings(),
+              ),
+            );
+          },
+          icon: const Icon(
+            Icons.settings,
             color: Colors.white,
           ),
         ),
