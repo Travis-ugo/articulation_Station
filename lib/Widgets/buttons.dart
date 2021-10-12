@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Pages/settings.dart';
+import 'package:oblack_tech/Pages/unwritten/settings.dart';
 
 class SButton extends StatelessWidget {
   const SButton({Key? key, required this.pIcons, required this.onPressed})

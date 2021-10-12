@@ -12,10 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Set landscape orientation
-    // SystemChrome.setPreferredOrientations([
-    //   DeviceOrientation.landscapeLeft,
-    //   DeviceOrientation.landscapeRight,
-    // ]);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Oblack.Tech',
