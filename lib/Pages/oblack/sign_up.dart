@@ -127,7 +127,7 @@ Widget containeer(BuildContext context) {
         hintText: 'E-mail',
         prefixIcon: const Icon(Icons.email),
         validator: (values) {
-          if (values! == '@') {
+          if (values!.contains('@', 1)) {
             return 'invalid E-main';
           }
           if (values.isEmpty) {
