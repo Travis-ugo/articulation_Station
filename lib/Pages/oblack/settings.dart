@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'oblack_widgets.dart';
+import '../raw/oblack_widgets.dart';
+import '../raw/three_buttons.dart';
 
 // unfinshed Business
 
@@ -18,10 +19,7 @@ class Settings extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SButton(
-              onPressed: () {},
-              pIcons: CupertinoIcons.home,
-            ),
+          const   HomeButton(),
             Column(
               children: [
                 // Frame

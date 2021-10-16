@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Widgets/buttons.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
+import 'oblack_widgets.dart';
 
 class SelectedUserClipBoard extends StatelessWidget {
   const SelectedUserClipBoard({Key? key}) : super(key: key);
@@ -15,20 +16,7 @@ class SelectedUserClipBoard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SButton(
-                  onPressed: () {},
-                  pIcons: CupertinoIcons.home,
-                ),
-                SButton(
-                  onPressed: () {},
-                  pIcons: Icons.chevron_left,
-                ),
-                const SettingsButton(),
-              ],
-            ),
+            customButtons(context),
             SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

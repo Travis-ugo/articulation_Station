@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 
-import 'oblack_widgets.dart';
+import '../raw/oblack_widgets.dart';
 
 class Notes extends StatelessWidget {
   const Notes({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class Notes extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            customButtons(),
+            customButtons(context),
             Column(
               children: [
                 // Frame

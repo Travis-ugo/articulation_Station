@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Widgets/sound_button.dart';
-import 'oblack_widgets.dart';
+import 'package:oblack_tech/Pages/raw/sound_button.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
+import '../raw/oblack_widgets.dart';
 
-class Customimages extends StatelessWidget {
-  const Customimages({Key? key}) : super(key: key);
+class AddingCustomimages extends StatelessWidget {
+  const AddingCustomimages({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class Customimages extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            customButtons(),
+            customButtons(context),
             SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,22 +60,4 @@ class Customimages extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget freeFrame(
-    {required Widget? child, required double height, required double width}) {
-  return Container(
-    height: height,
-    width: width,
-    decoration: BoxDecoration(
-      color: kolor.primaryColor,
-      border: Border.all(
-        width: 25,
-        color: kolor.borderColor,
-      ),
-    ),
-    child: Center(
-      child: child,
-    ),
-  );
 }

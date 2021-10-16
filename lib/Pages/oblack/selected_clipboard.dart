@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Widgets/buttons.dart';
+import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 
 class ClipBoard extends StatelessWidget {
   const ClipBoard({Key? key}) : super(key: key);
@@ -15,35 +16,13 @@ class ClipBoard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SButton(
-                  onPressed: () {},
-                  pIcons: CupertinoIcons.home,
-                ),
-                SButton(
-                  onPressed: () {},
-                  pIcons: Icons.chevron_left,
-                ),
-                const SettingsButton(),
-              ],
-            ),
+            customButtons(context),
             SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 300,
-                    width: 450,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF7E4900),
-                      border: Border.all(
-                        width: 25,
-                        color: const Color(0xFFE9CDA6),
-                      ),
-                    ),
+                  customFrame(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -105,16 +84,7 @@ class ClipBoard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  Container(
-                    height: 150,
-                    width: 350,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF7E4900),
-                      border: Border.all(
-                        width: 25,
-                        color: const Color(0xFFE9CDA6),
-                      ),
-                    ),
+                  smallCustomFrame(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [

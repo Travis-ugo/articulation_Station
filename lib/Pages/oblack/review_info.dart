@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:oblack_tech/Widgets/buttons.dart';
+import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 
 class ReviewInfo extends StatelessWidget {
   const ReviewInfo({Key? key}) : super(key: key);
@@ -20,32 +20,8 @@ class ReviewInfo extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    children: [
-                      SButton(
-                        onPressed: () {},
-                        pIcons: CupertinoIcons.home,
-                      ),
-                      const SizedBox(height: 20),
-                      SButton(
-                        onPressed: () {},
-                        pIcons: Icons.chevron_left,
-                      ),
-                      const SizedBox(height: 20),
-                      const SettingsButton(),
-                    ],
-                  ),
-                  Container(
-                    height: 300,
-                    width: 450,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF7E4900),
-                      border: Border.all(
-                        width: 25,
-                        color: const Color(0xFFE9CDA6),
-                      ),
-                    ),
-                    padding: const EdgeInsets.all(20),
+                  customButtons(context),
+                  customFrame(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -82,10 +58,8 @@ class ReviewInfo extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              color: const Color(0xFFDA8E00),
-              width: MediaQuery.of(context).size.width,
-              height: 50,
+            fanceyButttomLine(
+              context,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [

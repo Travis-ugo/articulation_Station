@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'oblack_widgets.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
+import '../raw/oblack_widgets.dart';
 
 class Attachrecording extends StatelessWidget {
   const Attachrecording({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class Attachrecording extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            customButtons(),
+            customButtons(context),
             Column(
               children: [
                 // Frame

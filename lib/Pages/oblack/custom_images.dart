@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Widgets/buttons.dart';
+import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 
 class CustomImages extends StatelessWidget {
   const CustomImages({Key? key}) : super(key: key);
@@ -15,34 +16,12 @@ class CustomImages extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SButton(
-                  onPressed: () {},
-                  pIcons: CupertinoIcons.home,
-                ),
-                SButton(
-                  onPressed: () {},
-                  pIcons: Icons.chevron_left,
-                ),
-                const SettingsButton(),
-              ],
-            ),
+            customButtons(context),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  height: 300,
-                  width: 450,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF7E4900),
-                    border: Border.all(
-                      width: 25,
-                      color: const Color(0xFFE9CDA6),
-                    ),
-                  ),
+                customFrame(
                   child: GridView.count(
                     crossAxisCount: 3,
                     crossAxisSpacing: 4.0,

@@ -1,7 +1,7 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'settings.dart';
 
 class SButton extends StatelessWidget {
   const SButton({Key? key, required this.pIcons, required this.onPressed})
@@ -14,7 +14,10 @@ class SButton extends StatelessWidget {
     return Container(
       height: 45,
       width: 45,
-      color: const Color(0xFFB20000),
+      decoration: BoxDecoration(
+         color: const Color(0xFFB20000),
+        borderRadius: BorderRadius.circular(5),      
+      ),
       child: Center(
         child: IconButton(
           onPressed: onPressed,
@@ -28,34 +31,6 @@ class SButton extends StatelessWidget {
   }
 }
 
-class SettingsButton extends StatelessWidget {
-  const SettingsButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 45,
-      width: 45,
-      color: const Color(0xFFB20000),
-      child: Center(
-        child: IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const Settings(),
-              ),
-            );
-          },
-          icon: const Icon(
-            Icons.settings,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 // Long button
 class LButton extends StatelessWidget {
@@ -69,9 +44,12 @@ class LButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 30,
+        height: 35,
         width: 80,
-        color: const Color(0xFFB20000),
+         decoration: BoxDecoration(
+         color: const Color(0xFFB20000),
+        borderRadius: BorderRadius.circular(5),
+      ),
         child: Center(
           child: Text(
             text,
@@ -106,31 +84,13 @@ class DButton extends StatelessWidget {
   }
 }
 
-Widget customButtons() {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
-      SButton(
-        onPressed: () {},
-        pIcons: CupertinoIcons.home,
-      ),
-      SButton(
-        onPressed: () {},
-        pIcons: Icons.chevron_left,
-      ),
-      const SizedBox(height: 40),
-      SButton(
-        onPressed: () {},
-        pIcons: Icons.settings,
-      ),
-    ],
-  );
-}
 
-Widget customFrame({required Widget child}) {
+
+Widget freeFrame(
+    {required Widget? child, required double height, required double width}) {
   return Container(
-    height: 300,
-    width: 480,
+    height: height,
+    width: width,
     decoration: BoxDecoration(
       color: kolor.primaryColor,
       border: Border.all(
@@ -138,7 +98,35 @@ Widget customFrame({required Widget child}) {
         color: kolor.borderColor,
       ),
     ),
-    child: child,
+    child: Center(
+      child: child,
+    ),
+  );
+}
+
+Widget fanceyButttomLine(BuildContext context,{required Widget child}) {
+  return  Container(
+              color: const Color(0xFFDA8E00),
+              width: MediaQuery.of(context).size.width,
+              height: 50,
+              child: child,
+            );
+}
+
+Widget customFrame({required Widget child}) {
+  return Container(
+    height: 300,
+    width: 470,
+    padding:const EdgeInsets.all(20),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(5),
+      color: kolor.primaryColor,
+      border: Border.all(
+        width: 25,
+        color: kolor.borderColor,
+      ),
+    ),
+    child: Center(child: child),
   );
 }
 
@@ -147,6 +135,7 @@ Widget smallCustomFrame({required Widget? child}) {
     height: 150,
     width: 350,
     decoration: BoxDecoration(
+       borderRadius: BorderRadius.circular(5),
       color: kolor.primaryColor,
       border: Border.all(
         width: 25,

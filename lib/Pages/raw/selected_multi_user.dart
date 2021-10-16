@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Widgets/buttons.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
+
+import 'oblack_widgets.dart';
 
 class SelectedMutiUser extends StatelessWidget {
   const SelectedMutiUser({Key? key}) : super(key: key);

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Widgets/buttons.dart';
+import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
+
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 
 class Matchingcards extends StatelessWidget {
   const Matchingcards({Key? key}) : super(key: key);
@@ -20,32 +22,8 @@ class Matchingcards extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SButton(
-                        onPressed: () {},
-                        pIcons: CupertinoIcons.home,
-                      ),
-                      const SizedBox(height: 20),
-                      SButton(
-                        onPressed: () {},
-                        pIcons: Icons.chevron_left,
-                      ),
-                      const SizedBox(height: 20),
-                      const SettingsButton(),
-                    ],
-                  ),
-                  Container(
-                    height: 300,
-                    width: 400,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF7E4900),
-                      border: Border.all(
-                        width: 25,
-                        color: const Color(0xFFE9CDA6),
-                      ),
-                    ),
+                  customButtons(context),
+                  customFrame(
                     child: GridView.count(
                       crossAxisCount: 3,
                       crossAxisSpacing: 24.0,
@@ -75,10 +53,8 @@ class Matchingcards extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              color: const Color(0xFFDA8E00),
-              width: MediaQuery.of(context).size.width,
-              height: 40,
+            fanceyButttomLine(
+              context,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [

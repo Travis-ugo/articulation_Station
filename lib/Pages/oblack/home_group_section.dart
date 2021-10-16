@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Widgets/buttons.dart';
+import 'package:oblack_tech/Pages/oblack/settings.dart';
+import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
 import 'package:oblack_tech/Widgets/sound_button.dart';
 
 class HomeGroup extends StatelessWidget {
@@ -8,7 +9,7 @@ class HomeGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFC19151),
+      backgroundColor: kolor.backGroundColors,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 60),
@@ -17,21 +18,25 @@ class HomeGroup extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  const SizedBox(width: 0),
                   const CircleRow(),
-                  const SizedBox(width: 220),
-                  const Icon(
-                    Icons.shopping_cart,
-                    size: 34,
-                    color: Colors.white,
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.shopping_cart,
+                        size: 34,
+                        color: Colors.white,
+                      ),
+                      const SizedBox(width: 15),
+                      LButton(onTap: () {}, text: 'Store'),
+                    ],
                   ),
-                  const SizedBox(width: 15),
-                  LButton(onTap: () {}, text: 'Store'),
                 ],
               ),
               SizedBox(
-                height: 300,
+                height: MediaQuery.of(context).size.height - 120,
                 width: MediaQuery.of(context).size.width,
                 child: GridView.count(
                   crossAxisCount: 6,
@@ -45,22 +50,26 @@ class HomeGroup extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                width: 600,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    LButton(text: 'Info', onTap: () {}),
-                    const SizedBox(width: 15),
-                    LButton(text: 'Score', onTap: () {}),
-                    const SizedBox(width: 15),
-                    LButton(text: 'Group', onTap: () {}),
-                    const SizedBox(width: 15),
-                    LButton(text: 'Settings', onTap: () {}),
-                    const SizedBox(width: 15),
-                    LButton(text: 'Multiple', onTap: () {}),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  LButton(text: 'Info', onTap: () {}),
+                  const SizedBox(width: 15),
+                  LButton(text: 'Score', onTap: () {}),
+                  const SizedBox(width: 15),
+                  LButton(text: 'Group', onTap: () {}),
+                  const SizedBox(width: 15),
+                  LButton(
+                      text: 'Settings',
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Settings()));
+                      }),
+                  const SizedBox(width: 15),
+                  LButton(text: 'Multiple', onTap: () {}),
+                ],
               ),
             ],
           ),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'oblack_widgets.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
+import '../raw/oblack_widgets.dart';
 
-class AddingCustomImages extends StatelessWidget {
-  const AddingCustomImages({Key? key}) : super(key: key);
+class AddCustomImages extends StatelessWidget {
+  const AddCustomImages({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class AddingCustomImages extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            customButtons(),
+            customButtons(context),
             SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

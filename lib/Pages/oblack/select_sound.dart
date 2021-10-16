@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Widgets/buttons.dart';
+import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 
-class SelectSound extends StatelessWidget {
-  const SelectSound({Key? key}) : super(key: key);
+class SelectedSound extends StatelessWidget {
+  const SelectedSound({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,33 +20,8 @@ class SelectSound extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SButton(
-                        onPressed: () {},
-                        pIcons: CupertinoIcons.home,
-                      ),
-                      const SizedBox(height: 20),
-                      SButton(
-                        onPressed: () {},
-                        pIcons: Icons.chevron_left,
-                      ),
-                      const SizedBox(height: 20),
-                      const SettingsButton(),
-                    ],
-                  ),
-                  Container(
-                    height: 300,
-                    width: 450,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF7E4900),
-                      border: Border.all(
-                        width: 25,
-                        color: const Color(0xFFE9CDA6),
-                      ),
-                    ),
-                    padding: const EdgeInsets.all(20),
+                  customButtons(context),
+                  customFrame(
                     child: Center(
                       child: Column(
                         children: [
@@ -74,6 +50,7 @@ class SelectSound extends StatelessWidget {
                               )
                             ],
                           ),
+                          const SizedBox(height: 15),
                           const Text(
                             'Estamos Bien" (stylized in upper case; English is a song by the Puerto Rican Latin trap artist Bad Bunny. The song was released by Rimas Entertainment on June 28, 2018, as the first single from his first studio album, X 100pre (2018).[1] It was written by Benito Martinez and Ismael Flores and',
                             style: TextStyle(
@@ -88,10 +65,8 @@ class SelectSound extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              color: const Color(0xFFDA8E00),
-              width: MediaQuery.of(context).size.width,
-              height: 50,
+            fanceyButttomLine(
+              context,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
