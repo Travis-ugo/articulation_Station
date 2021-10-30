@@ -1,12 +1,35 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 
 import 'oblack_widgets.dart';
 
-class NewUsers extends StatelessWidget {
+class NewUsers extends StatefulWidget {
   const NewUsers({Key? key}) : super(key: key);
 
+  @override
+  State<NewUsers> createState() => _NewUsersState();
+}
+
+class _NewUsersState extends State<NewUsers> {
+  Future selectFile() async {
+    final results = await FilePicker.platform.pickFiles(allowMultiple: false);
+
+    if (results == null) return;
+    final path = results.files.single.path!;
+
+    setState(() => file = File(path));
+  }
+
+  bool checkvalue = false;
+  File? file;
+  UploadTask? task;
+
+  get key => null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,23 +51,28 @@ class NewUsers extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Center(
-                        child: Container(
-                          height: 80,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: kolor.backGroundColors,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(Icons.person, color: Colors.white),
-                              SizedBox(),
-                              Text(
-                                'add photo',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ],
+                        child: GestureDetector(
+                          onTap: () {
+                            selectFile();
+                          },
+                          child: Container(
+                            height: 80,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: kolor.backGroundColors,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(Icons.person, color: Colors.white),
+                                SizedBox(),
+                                Text(
+                                  'add photo',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -64,6 +92,13 @@ class NewUsers extends StatelessWidget {
                           const SizedBox(
                             width: 10,
                           ),
+                          // Checkbox(
+                          //     value: checkvalue,
+                          //     onChanged: (value) {
+                          //       setState(() {
+                          //         setState(() => checkvalue = !checkvalue);
+                          //       });
+                          //     }),
                           Container(
                             height: 20,
                             width: 20,
