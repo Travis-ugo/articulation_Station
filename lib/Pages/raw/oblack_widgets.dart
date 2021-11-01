@@ -16,7 +16,7 @@ class SButton extends StatelessWidget {
       width: 45,
       decoration: BoxDecoration(
          color: const Color(0xFFB20000),
-        borderRadius: BorderRadius.circular(5),      
+        borderRadius: BorderRadius.circular(5),
       ),
       child: Center(
         child: IconButton(
