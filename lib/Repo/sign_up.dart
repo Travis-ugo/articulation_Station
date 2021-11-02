@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 import 'authentication/widget.dart';
 import 'google_signin.dart';
 
-class AuthSignUp extends StatefulWidget {
-  const AuthSignUp({
+class SignUp extends StatefulWidget {
+  const SignUp({
     Key? key,
     required this.registerAccount,
     this.toggleView,
@@ -16,10 +16,10 @@ class AuthSignUp extends StatefulWidget {
       registerAccount;
 
   @override
-  State<AuthSignUp> createState() => _AuthSignUpState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _AuthSignUpState extends State<AuthSignUp> {
+class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>(debugLabel: '_RegisterFormState');
   final _emailController = TextEditingController();
   final _displayNameController = TextEditingController();
@@ -64,6 +64,17 @@ class _AuthSignUpState extends State<AuthSignUp> {
                     signButton(
                       context: context,
                       onTap: widget.toggleView,
+                      // () {
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => SignInOblack(
+                      //         callback: (String email) {},
+                      //         login: (email, password) {},
+                      //       ),
+                      //     ),
+                      //   );
+                      // },
                       text: 'SIGN IN',
                       textColor: const Color(0xFFB20000),
                       containerColor: Colors.transparent,
@@ -187,6 +198,13 @@ class _AuthSignUpState extends State<AuthSignUp> {
                             email: _emailController.text,
                             password: _passwordController.text,
                           );
+                          // if (_formKey.currentState!.validate()) {
+                          //   widget.registerAccount(
+                          //     _emailController.text,
+                          //     _displayNameController.text,
+                          //     _passwordController.text,
+                          //   );
+                          // }
                         },
                         textColor: Colors.white,
                         containerColor: const Color(0xFFB20000),
@@ -203,3 +221,4 @@ class _AuthSignUpState extends State<AuthSignUp> {
     );
   }
 }
+

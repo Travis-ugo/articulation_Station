@@ -1,39 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 import '../raw/oblack_widgets.dart';
 import '../raw/three_buttons.dart';
 
 // unfinshed Business
 
-class Settings extends StatelessWidget {
-  const Settings({Key? key}) : super(key: key);
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFC19151),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 60),
+        padding: const EdgeInsets.symmetric(horizontal: 60),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          const   HomeButton(),
+            const Center(child: HomeButton()),
             Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 // Frame
                 customFrame(
                   child: scoringButton(),
                 ),
-                const SizedBox(height: 20),
                 addCustomImage()
               ],
             ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const SizedBox(),
                 DButton(key: key),
                 SButton(
                   onPressed: () {},
@@ -66,50 +66,40 @@ Widget addCustomImage() {
 }
 
 Widget scoringButton() {
-  return SizedBox(
-    width: 50,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      ListTile(
+        title: const Text(
           ' Back on Track Track',
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: 14),
         ),
-        Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              ' Back on Track',
-              style: TextStyle(fontSize: 14),
-            ),
-            const SizedBox(width: 5),
-            Container(
-              height: 25,
-              width: 60,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 0.9,
-                  color: Colors.black,
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    height: 20,
-                    width: 27,
-                    color: Colors.black,
-                  ),
-                  const Text(
-                    'now',
-                    style: TextStyle(fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
+        subtitle: const Text(
+          ' Back on Track',
+          style: TextStyle(fontSize: 14),
+        ),
+        trailing: ToggleSwitch(
+          borderWidth: 0.7,
+          borderColor: const [Colors.black],
+          minWidth: 20.0,
+          minHeight: 20,
+          cornerRadius: 5.0,
+          activeBgColors: [
+            const [Colors.black],
+            [Colors.red[800]!]
           ],
+          activeFgColor: Colors.white,
+          inactiveBgColor: Colors.grey,
+          inactiveFgColor: Colors.white,
+          initialLabelIndex: 1,
+          totalSwitches: 2,
+          labels: const ['True', 'False'],
+          radiusStyle: true,
+          onToggle: (index) {
+            // print('switched to: $index');
+          },
         ),
-      ],
-    ),
+      ),
+    ],
   );
 }

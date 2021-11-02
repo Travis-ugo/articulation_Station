@@ -1,5 +1,5 @@
+import 'package:flip_flap/Pages/raw/three_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 import '../raw/oblack_widgets.dart';
 
 class Attachrecording extends StatelessWidget {

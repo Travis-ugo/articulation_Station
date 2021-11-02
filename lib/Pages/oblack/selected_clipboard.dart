@@ -1,7 +1,7 @@
+import 'package:flip_flap/Pages/raw/oblack_widgets.dart';
+import 'package:flip_flap/Pages/raw/three_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
-import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 
 class ClipBoard extends StatelessWidget {
   const ClipBoard({Key? key}) : super(key: key);
@@ -16,14 +16,13 @@ class ClipBoard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            customButtons(context),
+         customButtons(context),
             SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  customFrame(
-                    child: Row(
+                customFrame(child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
@@ -81,10 +80,9 @@ class ClipBoard extends StatelessWidget {
                           ],
                         ),
                       ],
-                    ),
-                  ),
+                    ),),
                   const SizedBox(height: 20),
-                  smallCustomFrame(
+                 smallCustomFrame(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [

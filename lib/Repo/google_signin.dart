@@ -1,5 +1,69 @@
+import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
+import 'authentication/database.dart';
+
+class GoogleSign extends StatelessWidget {
+  const GoogleSign({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text('Testing Google signIn'),
+            const Text('Try and erro block'),
+            ElevatedButton.icon(
+              onPressed: () {
+                final provider =
+                    Provider.of<GoogleSignInProvider>(context, listen: false);
+                provider.googleLogin();
+              },
+              icon: const FaIcon(
+                FontAwesomeIcons.google,
+                color: Colors.red,
+              ),
+              label: const Text('Google sign in'),
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(300, 50),
+                primary: Colors.grey[800],
+              ),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                // final provider =
+                //     Provider.of<GoogleSignInProvider>(context, listen: false);
+                // provider.signInWithApple();
+              },
+              icon: const FaIcon(
+                FontAwesomeIcons.apple,
+                color: Colors.black54,
+              ),
+              label: const Text(
+                'Apple sign in',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(300, 50),
+                primary: Colors.grey[800],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 class GoogleSignInProvider extends ChangeNotifier {
   // Trigger the authentication flow
@@ -38,6 +102,7 @@ class GoogleSignInProvider extends ChangeNotifier {
     } on FirebaseAuthException catch (e) {
       print(e.toString());
     }
+    notifyListeners();
   }
 
   // check for existing Email and password
@@ -66,15 +131,22 @@ class GoogleSignInProvider extends ChangeNotifier {
     try {
       var credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+      var user = credential.user;
       await credential.user!.updateDisplayName(displayName);
+      await DataBaseService(uid: user!.uid)
+          .upDateData(displayName, 'photo Url');
+      // await credential.user!.updatePhotoURL(photoURL);`
     } on FirebaseAuthException catch (e) {
       print(e.toString());
     }
+    notifyListeners();
   }
 
+  // log user out
   Future logOut() async {
     await googleSignIn.disconnect();
     FirebaseAuth.instance.signOut();
+    notifyListeners();
   }
 }
 
@@ -83,7 +155,7 @@ class LoggedIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
+    // final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Logged In'),
@@ -105,13 +177,17 @@ class LoggedIn extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage(user.photoURL ?? ''),
-            ),
-            const SizedBox(),
-            Text(user.phoneNumber.toString()),
-            Text(user.displayName!),
-            Text(user.email!),
+            // TextButton(
+            //   onPressed: () {},
+            //   child: Text(user!.displayName ?? ''),
+            // ),
+            // CircleAvatar(
+            //   backgroundImage: NetworkImage(user.photoURL ?? ''),
+            // ),
+            // const SizedBox(),
+            // Text(user.phoneNumber.toString()),
+            // Text(user.displayName ?? ''),
+            // Text(user.email!),
           ],
         ),
       ),

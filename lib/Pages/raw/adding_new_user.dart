@@ -1,10 +1,9 @@
 import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flip_flap/Pages/raw/three_buttons.dart';
+import 'package:flip_flap/Repo/authentication/widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 
 import 'oblack_widgets.dart';
 
@@ -16,6 +15,7 @@ class NewUsers extends StatefulWidget {
 }
 
 class _NewUsersState extends State<NewUsers> {
+  File? file;
   Future selectFile() async {
     final results = await FilePicker.platform.pickFiles(allowMultiple: false);
 
@@ -25,13 +25,9 @@ class _NewUsersState extends State<NewUsers> {
     setState(() => file = File(path));
   }
 
-  bool checkvalue = false;
-  File? file;
-  UploadTask? task;
-
-  get key => null;
   @override
   Widget build(BuildContext context) {
+    final _nameController = TextEditingController();
     return Scaffold(
       backgroundColor: const Color(0xFFC19151),
       body: Padding(
@@ -51,17 +47,11 @@ class _NewUsersState extends State<NewUsers> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            selectFile();
-                          },
-                          child: Container(
+                        child: InkWell(
+                          onTap: selectFile,
+                          child: freePack(
                             height: 80,
                             width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: kolor.backGroundColors,
-                            ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
@@ -76,36 +66,27 @@ class _NewUsersState extends State<NewUsers> {
                           ),
                         ),
                       ),
-                      const Text(
-                        'name',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      const SizedBox(height: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
+                          freePack(
                             height: 30,
-                            width: 100,
-                            color: const Color(0xFFC19151),
+                            width: 170,
+                            child: formTile(
+                              controller: _nameController,
+                              hintText: 'Name',
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          freePack(
+                            height: 30,
+                            width: 30,
+                            child: Text(''),
                           ),
                           const SizedBox(
-                            width: 10,
-                          ),
-                          // Checkbox(
-                          //     value: checkvalue,
-                          //     onChanged: (value) {
-                          //       setState(() {
-                          //         setState(() => checkvalue = !checkvalue);
-                          //       });
-                          //     }),
-                          Container(
-                            height: 20,
-                            width: 20,
-                            color: const Color(0xFFC19151),
-                          ),
-                          const SizedBox(
-                            width: 10,
+                            width: 5,
                           ),
                           const Text(
                             'male',
@@ -114,54 +95,54 @@ class _NewUsersState extends State<NewUsers> {
                           const SizedBox(
                             width: 10,
                           ),
-                          Container(
-                            height: 20,
-                            width: 20,
-                            color: const Color(0xFFC19151),
+                          freePack(
+                            height: 30,
+                            width: 30,
+                            child: Text(''),
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          const SizedBox(width: 5),
                           const Text(
                             'female',
                             style: TextStyle(color: Colors.white),
                           )
                         ],
                       ),
-                      const Text(
-                        'name',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      const SizedBox(height: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
+                          freePack(
                             height: 30,
-                            width: 125,
-                            color: const Color(0xFFC19151),
+                            width: 170,
+                            child: formTile(
+                              controller: _nameController,
+                              hintText: 'Email',
+                            ),
                           ),
                           const SizedBox(
                             width: 10,
                           ),
-                          Container(
+                          freePack(
                             height: 30,
-                            width: 125,
-                            color: const Color(0xFFC19151),
+                            width: 170,
+                            child: formTile(
+                              controller: _nameController,
+                              hintText: 'Birthday',
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 260,
-                            color: const Color(0xFFC19151),
+                      const SizedBox(height: 5),
+                      Center(
+                        child: freePack(
+                          height: 50,
+                          width: 350,
+                          child: formTile(
+                            controller: _nameController,
+                            hintText: 'Notes',
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),
@@ -176,7 +157,7 @@ class _NewUsersState extends State<NewUsers> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const SizedBox(),
-                DButton(key: key),
+                const DButton(),
                 SButton(
                   onPressed: () {},
                   pIcons: Icons.volume_up_outlined,

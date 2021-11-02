@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'authentication/widget.dart';
+import 'google_signin.dart';
 
-class AuthSignIn extends HookWidget {
-  const AuthSignIn({
+class SignInOblack extends HookWidget {
+  const SignInOblack({
     this.callback,
     this.login,
     this.toggleView,
@@ -65,17 +69,6 @@ class AuthSignIn extends HookWidget {
                       const SizedBox(height: 35),
                       signButton(
                         onTap: toggleView,
-                        // () {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => SignUp(
-                        //         registerAccount:
-                        //             (displayName, email, password) {},
-                        //       ),
-                        //     ),
-                        //   );
-                        // },
                         text: 'SIGN UP',
                         textColor: const Color(0xFFB20000),
                         containerColor: Colors.transparent,
@@ -99,10 +92,8 @@ class AuthSignIn extends HookWidget {
   }) {
     final _formKey = GlobalKey<FormState>(debugLabel: '_EmailFormState');
 
-    final TextEditingController _signInEmailController =
-        TextEditingController();
-    final TextEditingController _signInPassWordController =
-        TextEditingController();
+    final _signInController = TextEditingController();
+    final _signInPassWordController = TextEditingController();
     final sizedBox = MediaQuery.of(context).size;
     final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
 
@@ -136,8 +127,6 @@ class AuthSignIn extends HookWidget {
                 icon: FontAwesomeIcons.google,
                 iconColor: const Color(0xFFB20000),
                 onTap: () {
-                  // final provider =
-                  //     Provider.of<GoogleSignInProvider>(context, listen: false);
                   provider.googleLogin();
                 },
               ),
@@ -158,7 +147,7 @@ class AuthSignIn extends HookWidget {
           ),
           SizedBox(height: sizedBox.height / 17),
           formContainer(
-            controller: _signInEmailController,
+            controller: _signInController,
             hintText: 'E-mail',
             prefixIcon: const Icon(Icons.email),
             validator: (values) {
@@ -167,8 +156,8 @@ class AuthSignIn extends HookWidget {
               }
               return 'null';
             },
-            obscureText: false,
             context: context,
+            obscureText: false,
           ),
           SizedBox(height: sizedBox.height / (4 * 10)),
           formContainer(
@@ -204,9 +193,9 @@ class AuthSignIn extends HookWidget {
           signButton(
             context: context,
             onTap: () async {
-              provider.verifyEmail(() {}, _signInEmailController.text);
+              provider.verifyEmail(() {}, _signInController.text);
               await provider.signInWithEmailAndPassword(
-                email: _signInEmailController.text,
+                email: _signInController.text,
                 password: _signInPassWordController.text,
               );
             },

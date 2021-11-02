@@ -1,7 +1,7 @@
+import 'package:flip_flap/Pages/oblack/home_group_section.dart';
+import 'package:flip_flap/Pages/oblack/settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Pages/oblack/home_group_section.dart';
-import 'package:oblack_tech/Pages/oblack/settings.dart';
 
 class SettingsButton extends StatelessWidget {
   const SettingsButton({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class SettingsButton extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const Settings(),
+                builder: (context) => const SettingsPage(),
               ),
             );
           },

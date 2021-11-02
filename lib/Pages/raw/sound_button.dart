@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Pages/oblack/select_sound.dart';
 
 class SoundButton extends StatelessWidget {
-  const SoundButton({Key? key, required this.width}) : super(key: key);
+  const SoundButton({Key? key, required this.width, required this.text, required this.onTap})
+      : super(key: key);
 
   final double width;
+  final String text;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const SelectedSound(),
-            ));
-      },
+      onTap: onTap,
       child: Stack(
         children: [
           Padding(
@@ -63,14 +59,14 @@ class SoundButton extends StatelessWidget {
           ),
           Center(
             child: Container(
-              height: width / 1.758 - 5,
-              width: width / 1.758,
+              height: width / 1.858 - 5,
+              width: width / 1.858,
               color: const Color(0xFFF0D0A6),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'P',
+                    text,
                     style: TextStyle(
                       fontSize: width / 4.25,
                       fontWeight: FontWeight.w600,
@@ -78,9 +74,9 @@ class SoundButton extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '/P/',
+                    '/$text/',
                     style: TextStyle(
-                      fontSize: width / 6.25,
+                      fontSize: width / 8.25,
                       color: const Color(0xFFA5660D),
                     ),
                   ),

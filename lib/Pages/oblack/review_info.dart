@@ -1,7 +1,9 @@
+
+import 'package:flip_flap/Pages/raw/oblack_widgets.dart';
+import 'package:flip_flap/Pages/raw/three_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
-import 'package:oblack_tech/Pages/raw/three_buttons.dart';
+
 
 class ReviewInfo extends StatelessWidget {
   const ReviewInfo({Key? key}) : super(key: key);
@@ -21,8 +23,7 @@ class ReviewInfo extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   customButtons(context),
-                  customFrame(
-                    child: Row(
+                 customFrame(child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
@@ -58,9 +59,7 @@ class ReviewInfo extends StatelessWidget {
                 ],
               ),
             ),
-            fanceyButttomLine(
-              context,
-              child: Row(
+           fanceyButttomLine(context, child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Text(
@@ -84,8 +83,7 @@ class ReviewInfo extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
-            ),
+              ),),
           ],
         ),
       ),

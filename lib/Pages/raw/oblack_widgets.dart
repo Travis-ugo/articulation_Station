@@ -1,7 +1,5 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 class SButton extends StatelessWidget {
   const SButton({Key? key, required this.pIcons, required this.onPressed})
@@ -15,7 +13,7 @@ class SButton extends StatelessWidget {
       height: 45,
       width: 45,
       decoration: BoxDecoration(
-         color: const Color(0xFFB20000),
+        color: const Color(0xFFB20000),
         borderRadius: BorderRadius.circular(5),
       ),
       child: Center(
@@ -31,7 +29,6 @@ class SButton extends StatelessWidget {
   }
 }
 
-
 // Long button
 class LButton extends StatelessWidget {
   const LButton({Key? key, required this.text, required this.onTap})
@@ -46,10 +43,10 @@ class LButton extends StatelessWidget {
       child: Container(
         height: 35,
         width: 80,
-         decoration: BoxDecoration(
-         color: const Color(0xFFB20000),
-        borderRadius: BorderRadius.circular(5),
-      ),
+        decoration: BoxDecoration(
+          color: const Color(0xFFB20000),
+          borderRadius: BorderRadius.circular(5),
+        ),
         child: Center(
           child: Text(
             text,
@@ -84,7 +81,20 @@ class DButton extends StatelessWidget {
   }
 }
 
-
+Widget freePack(
+    {required Widget? child, required double height, required double width}) {
+  return Container(
+    height: height,
+    width: width,
+    decoration: BoxDecoration(
+      color: kolor.backGroundColors,
+      borderRadius: BorderRadius.circular(5),
+    ),
+    child: Center(
+      child: child,
+    ),
+  );
+}
 
 Widget freeFrame(
     {required Widget? child, required double height, required double width}) {
@@ -104,20 +114,21 @@ Widget freeFrame(
   );
 }
 
-Widget fanceyButttomLine(BuildContext context,{required Widget child}) {
-  return  Container(
-              color: const Color(0xFFDA8E00),
-              width: MediaQuery.of(context).size.width,
-              height: 50,
-              child: child,
-            );
+Widget fanceyButttomLine(BuildContext context, {required Widget child}) {
+  return Container(
+    color: const Color(0xFFDA8E00),
+    width: MediaQuery.of(context).size.width,
+    height: 50,
+    child: child,
+  );
 }
+
 
 Widget customFrame({required Widget child}) {
   return Container(
     height: 300,
     width: 470,
-    padding:const EdgeInsets.all(20),
+    padding: const EdgeInsets.all(20),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(5),
       color: kolor.primaryColor,
@@ -135,7 +146,7 @@ Widget smallCustomFrame({required Widget? child}) {
     height: 150,
     width: 350,
     decoration: BoxDecoration(
-       borderRadius: BorderRadius.circular(5),
+      borderRadius: BorderRadius.circular(5),
       color: kolor.primaryColor,
       border: Border.all(
         width: 25,

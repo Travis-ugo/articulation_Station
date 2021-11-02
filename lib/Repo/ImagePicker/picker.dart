@@ -12,6 +12,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Future uploadFile() async {
+    if (file == null) return;
+
+    final fileName = file!.path;
+    final destination = "Files/$fileName";
+
+    task = FirebaseApi.uploadFile(destination, file!);
+    setState(() {});
+
+    if (task == null) return;
+    final snapShot = await task!.whenComplete(() => null);
+    final urlDownload = await snapShot.ref.getDownloadURL();
+    print('url of this file is: $urlDownload');
+  }
+
   File? file;
   UploadTask? task;
   @override
@@ -26,7 +41,7 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 250),
             button(onTap: () => selectFile(), text: 'Select File'),
@@ -44,8 +59,18 @@ class _HomePageState extends State<HomePage> {
                     'No File to upload',
                     style: TextStyle(color: Colors.white),
                   ),
-
-                 const SizedBox(height: 300),
+            // const SizedBox(height: 300),
+            Center(
+              child: Container(
+                  height: 50,
+                  width: 50,
+                  color: Colors.white,
+                  child:
+                  Text(''),
+                  //  Image.network(
+                  //     'https://firebasestorage.googleapis.com/v0/b/oblack123.appspot.com/o/Files%2Fdata%2Fuser%2F0%2Fcom.example.flip_flap%2Fcache%2Ffile_picker%2FIMG-20211030-WA0017.jpg?alt=media&token=5959c609-9ba7-4800-b6bb-97ad99cbbd74')
+                  ),
+            ),
           ],
         )),
       ),
@@ -77,21 +102,6 @@ class _HomePageState extends State<HomePage> {
     final path = results.files.single.path!;
 
     setState(() => file = File(path));
-  }
-
-  Future uploadFile() async {
-    if (file == null) return;
-
-    final fileName = file!.path;
-    final destination = "Files/$fileName";
-
-    task = FirebaseApi.uploadFile(destination, file!);
-    setState(() {});
-
-    if (task == null) return;
-    final snapShot = await task!.whenComplete(() => null);
-    final urlDownload = await snapShot.ref.getDownloadURL();
-    print('url of this file is: $urlDownload');
   }
 
   Widget buildUploadStatus(UploadTask task) =>

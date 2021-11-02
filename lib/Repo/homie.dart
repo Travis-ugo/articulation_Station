@@ -1,8 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flip_flap/Pages/oblack/watch_tutorials.dart';
+import 'package:flip_flap/Repo/sign_in.dart';
+import 'package:flip_flap/Repo/sign_up.dart';
 import 'package:flutter/material.dart';
-
-import 'Pages/oblack/home_group_section.dart';
-import 'Repositories/sign_in.dart';
-import 'Repositories/sign_up.dart';
 
 class Homie extends StatelessWidget {
   const Homie({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class Homie extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (snapshot.hasData) {
-          return const HomeGroup();
+          return const Contain();
         } else if (snapshot.hasError) {
           return const Center(
             child: Text('Something Went wrong'),
@@ -46,9 +46,9 @@ class _AuthenicationScreenState extends State<AuthenicationScreen> {
   @override
   Widget build(BuildContext context) {
     if (showSignIn) {
-      return AuthSignIn(toggleView: toggleView);
+      return  SignInOblack(toggleView: toggleView); 
     } else {
-      return AuthSignUp(
+      return SignUp(
         toggleView: toggleView,
         registerAccount: (String email, String displayName, String password) {},
       );
