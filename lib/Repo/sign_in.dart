@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 import 'authentication/widget.dart';
 import 'google_signin.dart';
 
-class SignInOblack extends HookWidget {
-  const SignInOblack({
+class SignIn extends HookWidget {
+  const SignIn({
     this.callback,
     this.login,
     this.toggleView,
@@ -26,20 +26,13 @@ class SignInOblack extends HookWidget {
           child: Flex(
             direction: Axis.horizontal,
             children: [
-              Flexible(
-                flex: 2,
-                child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  color: Colors.white,
-                  child: containeer(
-                    signIn: login,
+              Expanded(
+                  flex: 2,
+                  child: FormWidget(
                     callback: callback,
-                    context: context,
-                  ),
-                ),
-              ),
-              Flexible(
+                    signIn: login,
+                  )),
+              Expanded(
                 flex: 1,
                 child: Container(
                   height: MediaQuery.of(context).size.height,
@@ -84,19 +77,23 @@ class SignInOblack extends HookWidget {
       ),
     );
   }
+}
 
-  Widget containeer({
-    required BuildContext context,
-    required final void Function(String email)? callback,
-    required final void Function(String email, String password)? signIn,
-  }) {
+class FormWidget extends StatelessWidget {
+  const FormWidget({Key? key, required this.callback, required this.signIn})
+      : super(key: key);
+  final void Function(String email)? callback;
+  final void Function(String email, String password)? signIn;
+
+  @override
+  Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>(debugLabel: '_EmailFormState');
 
     final _signInController = TextEditingController();
     final _signInPassWordController = TextEditingController();
-    final sizedBox = MediaQuery.of(context).size;
-    final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
 
+    final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+    final sizedBox = MediaQuery.of(context).size;
     return Form(
       key: _formKey,
       child: Column(

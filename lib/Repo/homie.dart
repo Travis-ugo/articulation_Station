@@ -46,7 +46,7 @@ class _AuthenicationScreenState extends State<AuthenicationScreen> {
   @override
   Widget build(BuildContext context) {
     if (showSignIn) {
-      return  SignInOblack(toggleView: toggleView); 
+      return SignIn(toggleView: toggleView);
     } else {
       return SignUp(
         toggleView: toggleView,

@@ -48,10 +48,8 @@ Widget freeBox({
     child: Container(
       width: width,
       padding: const EdgeInsets.all(8),
-      child: Expanded(
-        child: Center(
-          child: child,
-        ),
+      child: Center(
+        child: child,
       ),
       decoration: BoxDecoration(
         color: Colors.white,

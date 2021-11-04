@@ -20,14 +20,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final _formKey = GlobalKey<FormState>(debugLabel: '_RegisterFormState');
-  final _emailController = TextEditingController();
-  final _displayNameController = TextEditingController();
-  final _passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
-    final sizedBox = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: Flex(
@@ -64,17 +58,6 @@ class _SignUpState extends State<SignUp> {
                     signButton(
                       context: context,
                       onTap: widget.toggleView,
-                      // () {
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //       builder: (context) => SignInOblack(
-                      //         callback: (String email) {},
-                      //         login: (email, password) {},
-                      //       ),
-                      //     ),
-                      //   );
-                      // },
                       text: 'SIGN IN',
                       textColor: const Color(0xFFB20000),
                       containerColor: Colors.transparent,
@@ -83,137 +66,9 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
             ),
-            Flexible(
+            const Flexible(
               flex: 2,
-              child: Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.white,
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Sign up',
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFFC19151),
-                        ),
-                      ),
-                      SizedBox(height: sizedBox.height / 25),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          iconButton(
-                            context: context,
-                            icon: FontAwesomeIcons.apple,
-                            iconColor: Colors.blueAccent,
-                            onTap: () {},
-                          ),
-                          const SizedBox(width: 10),
-                          iconButton(
-                            context: context,
-                            icon: FontAwesomeIcons.google,
-                            iconColor: const Color(0xFFB20000),
-                            onTap: () {
-                              final provider =
-                                  Provider.of<GoogleSignInProvider>(context,
-                                      listen: false);
-                              provider.googleLogin();
-                            },
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: sizedBox.height / 25),
-                      freeBox(
-                        width: 260,
-                        onTap: () {},
-                        child: const Text(
-                          'or use your phone number for registration',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      SizedBox(height: sizedBox.height / 17),
-                      formContainer(
-                        context: context,
-                        obscureText: false,
-                        controller: _displayNameController,
-                        hintText: 'Name',
-                        prefixIcon: const Icon(Icons.person_outline),
-                        validator: (values) {
-                          if (values.isEmpty) {
-                            return 'Enter a valid email to continue';
-                          }
-                          return 'null';
-                        },
-                      ),
-                      SizedBox(height: sizedBox.height / (4 * 10)),
-                      formContainer(
-                        context: context,
-                        obscureText: false,
-                        controller: _emailController,
-                        hintText: 'E-mail',
-                        prefixIcon: const Icon(Icons.email),
-                        validator: (values) {
-                          if (values.isEmpty) {
-                            return 'Enter a valid email to continue';
-                          }
-                          return 'null';
-                        },
-                      ),
-                      SizedBox(height: sizedBox.height / (4 * 10)),
-                      formContainer(
-                        context: context,
-                        obscureText: true,
-                        controller: _passwordController,
-                        hintText: 'Password',
-                        prefixIcon: const Icon(Icons.remove_red_eye),
-                        validator: (values) {
-                          if (values.length < 4) {
-                            return 'password too short';
-                          }
-                          if (values.isEmpty) {
-                            return 'Enter a valid password to continue';
-                          }
-                          return 'null';
-                        },
-                      ),
-                      SizedBox(height: sizedBox.height / 17),
-                      signButton(
-                        context: context,
-                        onTap: () async {
-                          final provider = Provider.of<GoogleSignInProvider>(
-                              context,
-                              listen: false);
-                          provider.registerAccount(
-                            displayName: _displayNameController.text,
-                            email: _emailController.text,
-                            password: _passwordController.text,
-                          );
-                          // if (_formKey.currentState!.validate()) {
-                          //   widget.registerAccount(
-                          //     _emailController.text,
-                          //     _displayNameController.text,
-                          //     _passwordController.text,
-                          //   );
-                          // }
-                        },
-                        textColor: Colors.white,
-                        containerColor: const Color(0xFFB20000),
-                        text: 'SIGN UP',
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              child: _FormWidget(),
             ),
           ],
         ),
@@ -222,3 +77,135 @@ class _SignUpState extends State<SignUp> {
   }
 }
 
+class _FormWidget extends StatelessWidget {
+  const _FormWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final sizedBox = MediaQuery.of(context).size;
+    final _formKey = GlobalKey<FormState>(debugLabel: '_RegisterFormState');
+    final _emailController = TextEditingController();
+    final _displayNameController = TextEditingController();
+    final _passwordController = TextEditingController();
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      color: Colors.white,
+      child: Form(
+        key: _formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(
+              'Sign up',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFFC19151),
+              ),
+            ),
+            SizedBox(height: sizedBox.height / 25),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                iconButton(
+                  context: context,
+                  icon: FontAwesomeIcons.apple,
+                  iconColor: Colors.blueAccent,
+                  onTap: () {},
+                ),
+                const SizedBox(width: 10),
+                iconButton(
+                  context: context,
+                  icon: FontAwesomeIcons.google,
+                  iconColor: const Color(0xFFB20000),
+                  onTap: () {
+                    final provider = Provider.of<GoogleSignInProvider>(context,
+                        listen: false);
+                    provider.googleLogin();
+                  },
+                ),
+              ],
+            ),
+            SizedBox(height: sizedBox.height / 25),
+            freeBox(
+              width: 260,
+              onTap: () {},
+              child: const Text(
+                'or use your phone number for registration',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(height: sizedBox.height / 17),
+            formContainer(
+              context: context,
+              obscureText: false,
+              controller: _displayNameController,
+              hintText: 'Name',
+              prefixIcon: const Icon(Icons.person_outline),
+              validator: (values) {
+                if (values.isEmpty) {
+                  return 'Enter a valid email to continue';
+                }
+                return 'null';
+              },
+            ),
+            SizedBox(height: sizedBox.height / (4 * 10)),
+            formContainer(
+              context: context,
+              obscureText: false,
+              controller: _emailController,
+              hintText: 'E-mail',
+              prefixIcon: const Icon(Icons.email),
+              validator: (values) {
+                if (values.isEmpty) {
+                  return 'Enter a valid email to continue';
+                }
+                return 'null';
+              },
+            ),
+            SizedBox(height: sizedBox.height / (4 * 10)),
+            formContainer(
+              context: context,
+              obscureText: true,
+              controller: _passwordController,
+              hintText: 'Password',
+              prefixIcon: const Icon(Icons.remove_red_eye),
+              validator: (values) {
+                if (values.length < 4) {
+                  return 'password too short';
+                }
+                if (values.isEmpty) {
+                  return 'Enter a valid password to continue';
+                }
+                return 'null';
+              },
+            ),
+            SizedBox(height: sizedBox.height / 17),
+            signButton(
+              context: context,
+              onTap: () async {
+                final provider =
+                    Provider.of<GoogleSignInProvider>(context, listen: false);
+                provider.registerAccount(
+                  displayName: _displayNameController.text,
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                );
+              },
+              textColor: Colors.white,
+              containerColor: const Color(0xFFB20000),
+              text: 'SIGN UP',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
