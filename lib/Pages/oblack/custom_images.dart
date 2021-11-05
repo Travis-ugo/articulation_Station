@@ -1,7 +1,8 @@
-import 'package:flip_flap/Pages/raw/oblack_widgets.dart';
-import 'package:flip_flap/Pages/raw/three_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
+
 class CustomImages extends StatelessWidget {
   const CustomImages({Key? key}) : super(key: key);
 
@@ -15,12 +16,12 @@ class CustomImages extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-           customButtons(context),
+            customButtons(context),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-               customFrame(
+                customFrame(
                   child: GridView.count(
                     crossAxisCount: 3,
                     crossAxisSpacing: 4.0,
