@@ -1,11 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flip_flap/Pages/oblack/select_sound.dart';
-import 'package:flip_flap/Pages/oblack/settings.dart';
-import 'package:flip_flap/Pages/oblack/watch_tutorials.dart';
-import 'package:flip_flap/Pages/raw/oblack_widgets.dart';
-import 'package:flip_flap/Pages/raw/sound_button.dart';
-import 'package:flip_flap/Repo/google_signin.dart';
 import 'package:flutter/material.dart';
+import 'package:oblack_tech/Pages/oblack/select_sound.dart';
+import 'package:oblack_tech/Pages/oblack/settings.dart';
+import 'package:oblack_tech/Pages/oblack/watch_tutorials.dart';
+import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
+import 'package:oblack_tech/Pages/raw/sound_button.dart';
+import 'package:oblack_tech/Repo/google_signin.dart';
 import 'package:provider/provider.dart';
 
 class HomeGroup extends StatelessWidget {

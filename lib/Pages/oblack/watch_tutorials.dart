@@ -1,8 +1,8 @@
-import 'package:flip_flap/Pages/oblack/review.dart';
-import 'package:flip_flap/Pages/raw/oblack_widgets.dart';
-import 'package:flip_flap/Pages/raw/three_buttons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oblack_tech/Pages/oblack/review.dart';
+import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 
 import 'credit_in_overview.dart';
 

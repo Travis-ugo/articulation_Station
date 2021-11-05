@@ -1,7 +1,7 @@
-import 'package:flip_flap/Pages/raw/sound_button.dart';
-import 'package:flip_flap/Pages/raw/three_buttons.dart';
-import 'package:flip_flap/Repo/authentication/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:oblack_tech/Pages/raw/sound_button.dart';
+import 'package:oblack_tech/Pages/raw/three_buttons.dart';
+import 'package:oblack_tech/Repo/authentication/widget.dart';
 import '../raw/oblack_widgets.dart';
 
 class AddingCustomimages extends StatelessWidget {
@@ -42,7 +42,8 @@ class AddingCustomimages extends StatelessWidget {
                                     SizedBox(),
                                     Text(
                                       'add photo',
-                                      style: TextStyle(color: Colors.white, fontSize: 12),
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 12),
                                     ),
                                   ],
                                 ),
@@ -82,7 +83,8 @@ class AddingCustomimages extends StatelessWidget {
                       freeFrame(
                           child: SoundButton(
                             width: 80,
-                            text: '', onTap: () {  },
+                            text: '',
+                            onTap: () {},
                           ),
                           height: 200,
                           width: 500),

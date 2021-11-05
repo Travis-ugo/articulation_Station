@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:toggle_switch/toggle_switch.dart';
-
 import '../raw/oblack_widgets.dart';
 import '../raw/three_buttons.dart';
 
