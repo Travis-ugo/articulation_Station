@@ -1,31 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'Utils/record_functions.dart';
-
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({Key? key}) : super(key: key);
-
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     // Set landscape orientation
-
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'Oblack.Tech',
-//       theme: ThemeData(
-//         primarySwatch: Colors.brown,
-//         primaryColor: const Color(0xFFC19151),
-//       ),
-//       home: const AudioRecorder(),
-//     );
-//   }
-// }
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
