@@ -12,18 +12,27 @@ class HomeGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Stream<QuerySnapshot> users =
-        FirebaseFirestore.instance.collection('guestbook').snapshots();
+        FirebaseFirestore.instance.collection('callers').snapshots();
     return Scaffold(
       backgroundColor: kolor.backGroundColors,
       body: StreamBuilder<QuerySnapshot>(
         stream: users,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Error don sup');
+            return const Center(child: Text('Error occured'));
           } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text('Loading');
+            return const Scaffold(
+              body: Center(child: Text('Loading')
+                  //  Image.asset(
+                  //   'assets/icon.png',
+                  //   scale: 4,
+                  // ),
+                  ),
+            );
           }
+
           final data = snapshot.requireData;
+
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 60),
@@ -35,7 +44,7 @@ class HomeGroup extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const SizedBox(width: 0),
-                      const CircleRow(),
+                      // const CircleRow(),
                       Row(
                         children: [
                           const Icon(
@@ -68,14 +77,19 @@ class HomeGroup extends StatelessWidget {
                         data.size,
                         (index) {
                           return SoundButton(
-                            text: data.docs[index]['Name'],
+                            text: data.docs[index]['name'],
                             width: 80,
                             onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      SelectedSound(sound: data.docs[index]),
+                                  builder: (context) => HomePage(
+                                    subCollection: data.docs[index]['docID'],
+                                  ), //'eA2VXNCFUW3s7SVP367o'
+                                  // SelectedSound(
+                                  //   sound: data.docs[index],
+                                  //   subCollection: data.docs[index]['docID'],
+                                  // ),
                                 ),
                               );
                             },
@@ -88,19 +102,40 @@ class HomeGroup extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       LButton(
-                          text: 'Info',
+                        text: 'Info',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Contain(),
+                            ),
+                          );
+                        },
+                      ),
+                      const SizedBox(width: 15),
+                      LButton(
+                        text: 'Score',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const SelectedUserClipBoard(),
+                            ),
+                          );
+                        },
+                      ),
+                      const SizedBox(width: 15),
+                      LButton(
+                          text: 'Group',
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const Contain(),
+                                builder: (context) => const SelectedMutiUser(),
                               ),
                             );
                           }),
-                      const SizedBox(width: 15),
-                      LButton(text: 'Score', onTap: () {}),
-                      const SizedBox(width: 15),
-                      LButton(text: 'Group', onTap: () {}),
                       const SizedBox(width: 15),
                       LButton(
                         text: 'Settings',
@@ -127,66 +162,65 @@ class HomeGroup extends StatelessWidget {
   }
 }
 
-class CircleRow extends StatelessWidget {
-  const CircleRow({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Column(
-          children: const [
-            CircleAvatar(
-              backgroundColor: Colors.white,
-              radius: 15,
-            ),
-            Text(
-              'mac',
-              style: TextStyle(
-                fontSize: 10,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(width: 15),
-        Column(
-          children: const [
-            CircleAvatar(
-              backgroundColor: Colors.white,
-              radius: 15,
-            ),
-            Text(
-              'mac',
-              style: TextStyle(
-                fontSize: 10,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(width: 15),
-        Column(
-          children: [
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                border: Border.all(
-                  width: 0.5,
-                  color: const Color(0xFFB20000),
-                ),
-              ),
-            ),
-            const Text(
-              'mac',
-              style: TextStyle(
-                color: Color(0xFFB20000),
-                fontSize: 10,
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
+// class CircleRow extends StatelessWidget {
+//   const CircleRow({Key? key}) : super(key: key);
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       children: [
+//         Column(
+//           children: const [
+//             CircleAvatar(
+//               backgroundColor: Colors.white,
+//               radius: 15,
+//             ),
+//             Text(
+//               'mac',
+//               style: TextStyle(
+//                 fontSize: 10,
+//               ),
+//             ),
+//           ],
+//         ),
+//         const SizedBox(width: 15),
+//         Column(
+//           children: const [
+//             CircleAvatar(
+//               backgroundColor: Colors.white,
+//               radius: 15,
+//             ),
+//             Text(
+//               'mac',
+//               style: TextStyle(
+//                 fontSize: 10,
+//               ),
+//             ),
+//           ],
+//         ),
+//         const SizedBox(width: 15),
+//         Column(
+//           children: [
+//             Container(
+//               height: 30,
+//               width: 30,
+//               decoration: BoxDecoration(
+//                 borderRadius: BorderRadius.circular(50),
+//                 border: Border.all(
+//                   width: 0.5,
+//                   color: const Color(0xFFB20000),
+//                 ),
+//               ),
+//             ),
+//             const Text(
+//               'mac',
+//               style: TextStyle(
+//                 color: Color(0xFFB20000),
+//                 fontSize: 10,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ],
+//     );
+//   }
+// }
