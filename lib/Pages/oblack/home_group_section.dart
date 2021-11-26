@@ -7,27 +7,258 @@ import 'package:oblack_tech/Pages/raw/sound_button.dart';
 import 'package:oblack_tech/Repo/google_signin.dart';
 import 'package:provider/provider.dart';
 
-class HomeGroup extends StatelessWidget {
-  const HomeGroup({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  final String subCollection;
+  const HomePage({Key? key, required this.subCollection}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final textEditor = TextEditingController();
+  final ageEditor = TextEditingController();
+  final _formKey = GlobalKey<FormState>(debugLabel: '_EmailFormState');
+
   @override
   Widget build(BuildContext context) {
-    final Stream<QuerySnapshot> users =
-        FirebaseFirestore.instance.collection('callers').snapshots();
+    Stream<QuerySnapshot> users = FirebaseFirestore.instance
+        .collection('callers')
+        .doc(widget.subCollection)
+        .collection('call')
+        .snapshots();
+
+    CollectionReference user = FirebaseFirestore.instance.collection('callers');
+
     return Scaffold(
-      backgroundColor: kolor.backGroundColors,
+      body: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 200,
+                child: StreamBuilder<QuerySnapshot>(
+                    stream: users,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.hasError) {
+                        return const Center(
+                          child: Text('Error Occured'),
+                        );
+                      }
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: Text('Loading'),
+                        );
+                      }
+                      final data = snapshot.requireData;
+                      return Scaffold(
+                          backgroundColor: const Color(0xFFC19151),
+                          body: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 60),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      customButtons(context),
+                                      customFrame(
+                                        child: Center(
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    const Text(
+                                                      '',
+                                                      //  data.docs[index]['word'],
+                                                      style: TextStyle(
+                                                        color:
+                                                            Color(0xFFC79758),
+                                                        fontSize: 102,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                    const Text(
+                                                      '',
+
+                                                      // 'as in /${data.docs[index]['images']}/',
+                                                      style: TextStyle(
+                                                        color:
+                                                            Color(0xFFC79758),
+                                                        fontSize: 14,
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      height: 90,
+                                                      width: 90,
+                                                      color: Colors.white,
+                                                      // child: Text(data.docs[index]['images'],),
+                                                    ),
+                                                  ]),
+                                              //   ],
+                                              // ),
+                                              const SizedBox(height: 15),
+                                              const Text(
+                                                '',
+                                                //  data.docs[index]['word'],
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              const SizedBox(height: 15),
+                                              const Text(
+                                                '',
+                                                // data.docs[index]['images'],
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      const DButton(),
+                                    ],
+                                  ),
+                                )
+                              ]));
+                      // fanceyButttomLine(
+                      //      context:   context,
+
+                      //     child: Row(
+                      //       mainAxisAlignment: MainAxisAlignment.center,
+                      //       children: const [
+                      //         Text(
+                      //           'words',
+                      //           style: TextStyle(
+                      //             color: Colors.white,
+                      //           ),
+                      //         ),
+                      //         SizedBox(width: 30),
+                      //         Text(
+                      //           'sentence',
+                      //           style: TextStyle(
+                      //             color: Colors.white,
+                      //           ),
+                      //         ),
+                      //         SizedBox(width: 30),
+                      //         Text(
+                      //           'stories',
+                      //           style: TextStyle(
+                      //             color: Colors.white,
+                      //           ),
+                      //         ),
+                      //       ],
+                      // ),
+
+                      // ),
+                      // ],
+                    }),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+// return ListView.builder(
+//   itemCount: data.size,
+//   itemBuilder: (context, index) {
+//     return Center(
+//       child: Text(
+//         'My name is ${data.docs[index]['word']} my age ${data.docs[index]['images']}',
+//       ),
+//     );
+//   },
+// );
+//             },
+//           ),
+//         ),
+//         const Text('Test The Package'),
+//         const Text('Write Data to Firestore'),
+//         const SizedBox(height: 20),
+//         TextFormField(
+//           controller: textEditor,
+//           decoration: const InputDecoration(
+//             icon: Icon(Icons.person),
+//             labelText: 'Name',
+//           ),
+//         ),
+//         const SizedBox(height: 20),
+//         TextFormField(
+//           controller: ageEditor,
+//           decoration: const InputDecoration(
+//             icon: Icon(Icons.date_range),
+//             labelText: 'Age',
+//           ),
+//         ),
+//         const SizedBox(height: 20),
+//         ElevatedButton(
+//           onPressed: () {
+//             if (_formKey.currentState!.validate()) {
+//               ScaffoldMessenger.of(context).showSnackBar(
+//                 const SnackBar(
+//                   content: Text('submited'),
+//                 ),
+//               );
+//               user
+//                   .add({
+//                     'name': textEditor.text,
+//                     'docID': ageEditor.text,
+//                   })
+//                   .then((value) => print('user added'))
+//                   .catchError((error) {
+//                     print('this error occured $error');
+//                   });
+//             }
+//           },
+//           child: const Text('submit'),
+//         ),
+//         const SizedBox(height: 20),
+//       ]),
+//     ),
+//   ),
+// );
+// }
+// }
+
+class SelectedSound extends StatelessWidget {
+  final QueryDocumentSnapshot<Object?> sound;
+  final Stream<QuerySnapshot> subCollection;
+
+  const SelectedSound(
+      {Key? key, required this.sound, required this.subCollection})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final Stream<QuerySnapshot> callertune = FirebaseFirestore.instance
+        .collection('caller')
+        .doc('JuyoxUEg0Kh0dzviHziu')
+        .collection('call')
+        .snapshots();
+
+    return Scaffold(
       body: StreamBuilder<QuerySnapshot>(
-        stream: users,
+        stream: callertune,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return const Center(child: Text('Error occured'));
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return const Scaffold(
-              body: Center(child: Text('Loading')
-                  //  Image.asset(
-                  //   'assets/icon.png',
-                  //   scale: 4,
-                  // ),
-                  ),
+              body: Center(child: Text('Loading')),
             );
           }
 
@@ -39,120 +270,20 @@ class HomeGroup extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const SizedBox(width: 0),
-                      // const CircleRow(),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.shopping_cart,
-                            size: 34,
-                            color: Colors.white,
-                          ),
-                          const SizedBox(width: 15),
-                          LButton(
-                            onTap: () {
-                              final provider =
-                                  Provider.of<GoogleSignInProvider>(context,
-                                      listen: false);
-                              provider.logOut();
-                            },
-                            text: 'Store',
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height - 120,
-                    width: MediaQuery.of(context).size.width,
-                    child: GridView.count(
-                      crossAxisCount: 6,
-                      crossAxisSpacing: 30.0,
-                      mainAxisSpacing: 0,
-                      children: List.generate(
-                        data.size,
-                        (index) {
-                          return SoundButton(
-                            text: data.docs[index]['name'],
-                            width: 80,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => HomePage(
-                                    subCollection: data.docs[index]['docID'],
-                                  ), //'eA2VXNCFUW3s7SVP367o'
-                                  // SelectedSound(
-                                  //   sound: data.docs[index],
-                                  //   subCollection: data.docs[index]['docID'],
-                                  // ),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      LButton(
-                        text: 'Info',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Contain(),
-                            ),
-                          );
-                        },
-                      ),
-                      const SizedBox(width: 15),
-                      LButton(
-                        text: 'Score',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const SelectedUserClipBoard(),
-                            ),
-                          );
-                        },
-                      ),
-                      const SizedBox(width: 15),
-                      LButton(
-                          text: 'Group',
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SelectedMutiUser(),
-                              ),
-                            );
-                          }),
-                      const SizedBox(width: 15),
-                      LButton(
-                        text: 'Settings',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SettingsPage(),
-                            ),
-                          );
-                        },
-                      ),
-                      const SizedBox(width: 15),
-                      LButton(text: 'Multiple', onTap: () {}),
-                    ],
-                  ),
-                ],
+                children: List.generate(
+                  data.size,
+                  (index) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(data.docs[index]['word']),
+                        Text(data.docs[index]['sentence']),
+                        Text(data.docs[index]['images']),
+                        Text(data.docs[index]['sounds']),
+                      ],
+                    );
+                  },
+                ),
               ),
             ),
           );
@@ -161,66 +292,3 @@ class HomeGroup extends StatelessWidget {
     );
   }
 }
-
-// class CircleRow extends StatelessWidget {
-//   const CircleRow({Key? key}) : super(key: key);
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       children: [
-//         Column(
-//           children: const [
-//             CircleAvatar(
-//               backgroundColor: Colors.white,
-//               radius: 15,
-//             ),
-//             Text(
-//               'mac',
-//               style: TextStyle(
-//                 fontSize: 10,
-//               ),
-//             ),
-//           ],
-//         ),
-//         const SizedBox(width: 15),
-//         Column(
-//           children: const [
-//             CircleAvatar(
-//               backgroundColor: Colors.white,
-//               radius: 15,
-//             ),
-//             Text(
-//               'mac',
-//               style: TextStyle(
-//                 fontSize: 10,
-//               ),
-//             ),
-//           ],
-//         ),
-//         const SizedBox(width: 15),
-//         Column(
-//           children: [
-//             Container(
-//               height: 30,
-//               width: 30,
-//               decoration: BoxDecoration(
-//                 borderRadius: BorderRadius.circular(50),
-//                 border: Border.all(
-//                   width: 0.5,
-//                   color: const Color(0xFFB20000),
-//                 ),
-//               ),
-//             ),
-//             const Text(
-//               'mac',
-//               style: TextStyle(
-//                 color: Color(0xFFB20000),
-//                 fontSize: 10,
-//               ),
-//             ),
-//           ],
-//         ),
-//       ],
-//     );
-//   }
-// }
