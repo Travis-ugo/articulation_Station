@@ -63,6 +63,35 @@ class GoogleSign extends StatelessWidget {
 }
 
 class GoogleSignInProvider extends ChangeNotifier {
+  Future usersData(String name, String datatext) async {
+    final brewCollection = FirebaseFirestore.instance.collection('users');
+    final fuser = FirebaseAuth.instance;
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('kk:mm:ss  EEE d MMM').format(now);
+    // CollectionReference user = FirebaseFirestore.instance.collection('callers').doc(fuser.currentUser!.uid).collection('students').doc().set(data)
+    return await brewCollection.doc(fuser.currentUser!.uid).set({
+      'Name': name,
+      'Datatext': datatext,
+      'timestamp': formattedDate,
+    });
+  }
+
+  Future studentsData(String first, String second) async {
+    final rewCollection = FirebaseFirestore.instance.collection('peter');
+    final fuser = FirebaseAuth.instance;
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('kk:mm:ss  EEE d MMM').format(now);
+    return await rewCollection
+        .doc(fuser.currentUser!.uid)
+        .collection('students')
+        .add(<String, dynamic>{
+      'first': first,
+      'timestamp': formattedDate,
+      'second': second,
+      'userId': FirebaseAuth.instance.currentUser!.uid,
+    });
+  }
+
   // Trigger the authentication flow
   final googleSignIn = GoogleSignIn();
   GoogleSignInAccount? _user;

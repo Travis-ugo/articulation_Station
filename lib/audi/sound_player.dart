@@ -29,6 +29,7 @@ class SoundPlayer {
 
   Future init() async {
     _audioPlayer = FlutterSoundPlayer();
+    // await _audioPlayer!.seekToPlayer(const Duration( seconds: 200));
     await _audioPlayer!.openAudioSession(
       withUI: true,
 
