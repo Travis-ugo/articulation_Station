@@ -1,66 +1,9 @@
-P {
-    alphabets {
-            p
-            k
-            Ch
-            S
-            T
-            G
-            E
-            O
-            Y
-            L
-    }
-    
-}
-
-
-DocumentCollection {
-    Document ID {
-        DocumentCollection {
-            DocumentCollection {
-                Document ID 1 {
-                word : 'pie';
-                sentence : 'Peter paid for peach pie with a Peter Pan picture.';
-                sounds : 'http/sound';
-                images : 'http/images';
-            }
-            Document ID 2 {
-                word : 'pen';
-                sentence : 'Pam had a pen and paper to write a poem.';
-                sounds : 'http/sound';
-                images : 'http/images';
-            } 
-            Document ID 3 {
-                word : 'Peach';
-                sentence : 'Paris made a peach pie with a pink princess picture.';
-                sounds : 'http/sound';
-                images : 'http/images';
-            } 
-            Document ID 4 {
-                word : 'Pants';
-                sentence : 'Pedro bought a pair of purple pants for paige.';
-                sounds : 'http/sound';
-                images : 'http/images';
-            } 
-            Document ID5 {
-                word : 'Paint';
-                sentence : 'In the past, Paxton could paint portraits.';
-                sounds : 'http/sound';
-                images : 'http/images';
-            } 
-            Document ID 6 {
-                word : ' Pig';
-                sentence : 'Peter and Pedro went to the farm to see pigs and pigeons.';
-                sounds : 'http/sound';
-                images : 'http/images';
-            }
-            }
+user {
+    many teachers {
+        many studenst{
+            studenst info{
+                students scores and audio recording.
             }
         }
     }
-} 
-
-
-
-
+}

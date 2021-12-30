@@ -4,15 +4,28 @@ import 'package:firebase_auth/firebase_auth.dart';
 class DataBaseService {
   final String? uid;
   DataBaseService({this.uid});
-  final CollectionReference brewCollection =
-      FirebaseFirestore.instance.collection('Users');
+  final brewCollection = FirebaseFirestore.instance.collection('users');
 
-  Future upDateData(String name, String photoUrl) async {
+  Future upDateData(String name, String datatext) async {
     return await brewCollection.doc(uid).set({
       'Name': name,
-      'PhotoUrl': photoUrl,
+      'Datatext': datatext,
+      'timestamp': DateTime.now().millisecondsSinceEpoch,
     });
   }
+  // User? user = FirebaseAuth.instance.currentUser;
+
+  // Future uDateData(String name, String photoUrl) async {
+  //   return await FirebaseFirestore
+  //   .instance
+  //   .collection('orders')
+  //   .doc(user!.uid)
+  // .collection(
+  //     "user_orders")
+  //   .add({
+  //       //add your data that you want to upload
+  //       });
+  // }
   Future upData(String name, String photoUrl) async {
     return await brewCollection.add(<String, dynamic>{
       'text': 'hi',
@@ -21,13 +34,4 @@ class DataBaseService {
       'userId': FirebaseAuth.instance.currentUser!.uid,
     });
   }
-
-//  Stream<QuerySnapshot> get crews {
-//     return brewCollection.get();
-//   }
- 
-  Stream<QuerySnapshot> get brews {
-    return brewCollection.snapshots();
-  }
 }
-

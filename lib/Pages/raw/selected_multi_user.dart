@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
 import 'package:oblack_tech/Pages/raw/three_buttons.dart';
-
-import 'oblack_widgets.dart';
+import 'package:oblack_tech/Pages/raw/user_clipboard.dart';
 
 class SelectedMutiUser extends StatelessWidget {
   const SelectedMutiUser({Key? key}) : super(key: key);
@@ -56,22 +56,33 @@ class SelectedMutiUser extends StatelessWidget {
                           return Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                height: 60,
-                                width: 60,
-                                color: const Color(0xFFFFFFFF),
-                                child: Column(
-                                  children: const [
-                                    CircleAvatar(
-                                      backgroundColor: Colors.white,
-                                      radius: 12,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SelectedUserClipBoard(),
                                     ),
-                                    SizedBox(height: 5),
-                                    Text(
-                                      'mac',
-                                      style: TextStyle(fontSize: 12),
-                                    ),
-                                  ],
+                                  );
+                                },
+                                child: Container(
+                                  height: 60,
+                                  width: 60,
+                                  color: const Color(0xFFFFFFFF),
+                                  child: Column(
+                                    children: const [
+                                      CircleAvatar(
+                                        backgroundColor: Colors.white,
+                                        radius: 12,
+                                      ),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        'mac',
+                                        style: TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Container(

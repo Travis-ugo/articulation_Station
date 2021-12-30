@@ -70,44 +70,55 @@ Widget freeBox({
   );
 }
 
-Widget formContainer({
-  required BuildContext context,
-  required TextEditingController controller,
-  required String hintText,
-  required Widget prefixIcon,
-  required bool obscureText,
-  required String Function(String) validator,
-}) {
-  return ConstrainedBox(
-    constraints: const BoxConstraints(
-        maxWidth: 450, minHeight: 30, maxHeight: 50, minWidth: 120),
-    child: Container(
-      height: MediaQuery.of(context).size.height / (2 * 5.25),
-      width: MediaQuery.of(context).size.width / 2.5,
-      decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: TextFormField(
-        autocorrect: false,
-        controller: controller,
-        obscureText: obscureText,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          disabledBorder: InputBorder.none,
-          errorBorder: InputBorder.none,
-          prefixIcon: prefixIcon,
-          hintText: hintText,
-          hintStyle: TextStyle(
-            fontSize: 14,
-            color: Colors.grey.shade500,
+class FormContainer extends StatelessWidget {
+  const FormContainer({
+    Key? key,
+    required this.controller,
+    required this.hintText,
+    required this.prefixIcon,
+    required this.obscureText,
+    required this.validator,
+  }) : super(key: key);
+
+  final TextEditingController controller;
+  final String hintText;
+  final Widget prefixIcon;
+  final bool obscureText;
+  final String Function(String) validator;
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(
+          maxWidth: 450, minHeight: 30, maxHeight: 50, minWidth: 120,),
+      child: Container(
+        height: MediaQuery.of(context).size.height / (2 * 5.25),
+        width: MediaQuery.of(context).size.width / 2.5,
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: TextFormField(
+          autocorrect: false,
+          controller: controller,
+          obscureText: obscureText,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            prefixIcon: prefixIcon,
+            hintText: hintText,
+            hintStyle: TextStyle(
+              fontSize: 14,
+              color: Colors.grey.shade500,
+            ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 Widget formTile({

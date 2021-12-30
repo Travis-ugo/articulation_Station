@@ -1,11 +1,28 @@
+import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:oblack_tech/Pages/raw/sound_button.dart';
 import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 import 'package:oblack_tech/Repo/authentication/widget.dart';
 import '../raw/oblack_widgets.dart';
 
-class AddingCustomimages extends StatelessWidget {
+class AddingCustomimages extends StatefulWidget {
   const AddingCustomimages({Key? key}) : super(key: key);
+
+  @override
+  State<AddingCustomimages> createState() => _AddingCustomimagesState();
+}
+
+class _AddingCustomimagesState extends State<AddingCustomimages> {
+  File? file;
+  Future selectFile() async {
+    final results = await FilePicker.platform.pickFiles(allowMultiple: false);
+
+    if (results == null) return;
+    final path = results.files.single.path!;
+
+    setState(() => file = File(path));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,20 +49,25 @@ class AddingCustomimages extends StatelessWidget {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              freePack(
-                                height: 60,
-                                width: 80,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Icon(Icons.person, color: Colors.white),
-                                    SizedBox(),
-                                    Text(
-                                      'add photo',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 12),
-                                    ),
-                                  ],
+                              InkWell(
+                                onTap: selectFile,
+                                child: freePack(
+                                  height: 60,
+                                  width: 80,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Icon(Icons.person, color: Colors.white),
+                                      SizedBox(),
+                                      Text(
+                                        'add photo',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
@@ -98,7 +120,7 @@ class AddingCustomimages extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const SizedBox(),
-                DButton(key: key),
+                const DButton(),
                 SButton(
                   onPressed: () {},
                   pIcons: Icons.volume_up_outlined,

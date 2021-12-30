@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 import 'authentication/widget.dart';
 import 'google_signin.dart';
 
-class SignIn extends HookWidget {
-  const SignIn({
+class SignInOblack extends HookWidget {
+  const SignInOblack({
     this.callback,
     this.login,
     this.toggleView,
@@ -131,7 +131,7 @@ class FormWidget extends StatelessWidget {
           ),
           SizedBox(height: sizedBox.height / 25),
           freeBox(
-            width: 180,
+            width: 220,
             onTap: () {},
             child: const Text(
               'or use your phone number',
@@ -143,7 +143,7 @@ class FormWidget extends StatelessWidget {
             ),
           ),
           SizedBox(height: sizedBox.height / 17),
-          formContainer(
+          FormContainer(
             controller: _signInController,
             hintText: 'E-mail',
             prefixIcon: const Icon(Icons.email),
@@ -153,12 +153,10 @@ class FormWidget extends StatelessWidget {
               }
               return 'null';
             },
-            context: context,
             obscureText: false,
           ),
           SizedBox(height: sizedBox.height / (4 * 10)),
-          formContainer(
-            context: context,
+          FormContainer(
             controller: _signInPassWordController,
             hintText: 'Password',
             prefixIcon: const Icon(Icons.remove_red_eye),

@@ -39,7 +39,7 @@ class _SignUpState extends State<SignUp> {
                     const Text(
                       "Welcome Back!",
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 26,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
@@ -48,7 +48,7 @@ class _SignUpState extends State<SignUp> {
                     const Text(
                       "Please sign in with your\npersonal info to stay connected",
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         fontWeight: FontWeight.w200,
                         color: Colors.white,
                       ),
@@ -100,7 +100,7 @@ class _FormWidget extends StatelessWidget {
             const Text(
               'Sign up',
               style: TextStyle(
-                fontSize: 30,
+                fontSize: 26,
                 fontWeight: FontWeight.w600,
                 color: Color(0xFFC19151),
               ),
@@ -135,7 +135,7 @@ class _FormWidget extends StatelessWidget {
               child: const Text(
                 'or use your phone number for registration',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 10,
                   fontWeight: FontWeight.w600,
                   color: Colors.grey,
                 ),
@@ -143,8 +143,7 @@ class _FormWidget extends StatelessWidget {
               ),
             ),
             SizedBox(height: sizedBox.height / 17),
-            formContainer(
-              context: context,
+            FormContainer(
               obscureText: false,
               controller: _displayNameController,
               hintText: 'Name',
@@ -157,8 +156,7 @@ class _FormWidget extends StatelessWidget {
               },
             ),
             SizedBox(height: sizedBox.height / (4 * 10)),
-            formContainer(
-              context: context,
+            FormContainer(
               obscureText: false,
               controller: _emailController,
               hintText: 'E-mail',
@@ -171,8 +169,7 @@ class _FormWidget extends StatelessWidget {
               },
             ),
             SizedBox(height: sizedBox.height / (4 * 10)),
-            formContainer(
-              context: context,
+            FormContainer(
               obscureText: true,
               controller: _passwordController,
               hintText: 'Password',

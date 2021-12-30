@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oblack_tech/Utils/timer.dart';
+import 'package:oblack_tech/audi/timer.dart';
 import 'sound_player.dart';
 import 'sound_recoder.dart';
 

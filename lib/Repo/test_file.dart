@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:oblack_tech/Pages/raw/sound_button.dart';
+import 'package:oblack_tech/Repo/google_signin.dart';
 import 'package:provider/provider.dart';
-import 'package:flip_flap/Pages/raw/sound_button.dart';
-import 'package:flip_flap/Repo/google_signin.dart';
 
 class HomeTry extends StatelessWidget {
   const HomeTry({Key? key}) : super(key: key);
@@ -43,7 +43,8 @@ class HomeTry extends StatelessWidget {
               return Center(
                 child: SoundButton(
                   text: data.docs[index]['Name'],
-                  width: 80, onTap: () {  },
+                  width: 80,
+                  onTap: () {},
                 ),
               );
             },

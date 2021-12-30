@@ -1,7 +1,11 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'authentication/database.dart';
 
@@ -63,35 +67,6 @@ class GoogleSign extends StatelessWidget {
 }
 
 class GoogleSignInProvider extends ChangeNotifier {
-  Future usersData(String name, String datatext) async {
-    final brewCollection = FirebaseFirestore.instance.collection('users');
-    final fuser = FirebaseAuth.instance;
-    DateTime now = DateTime.now();
-    String formattedDate = DateFormat('kk:mm:ss  EEE d MMM').format(now);
-    // CollectionReference user = FirebaseFirestore.instance.collection('callers').doc(fuser.currentUser!.uid).collection('students').doc().set(data)
-    return await brewCollection.doc(fuser.currentUser!.uid).set({
-      'Name': name,
-      'Datatext': datatext,
-      'timestamp': formattedDate,
-    });
-  }
-
-  Future studentsData(String first, String second) async {
-    final rewCollection = FirebaseFirestore.instance.collection('peter');
-    final fuser = FirebaseAuth.instance;
-    DateTime now = DateTime.now();
-    String formattedDate = DateFormat('kk:mm:ss  EEE d MMM').format(now);
-    return await rewCollection
-        .doc(fuser.currentUser!.uid)
-        .collection('students')
-        .add(<String, dynamic>{
-      'first': first,
-      'timestamp': formattedDate,
-      'second': second,
-      'userId': FirebaseAuth.instance.currentUser!.uid,
-    });
-  }
-
   // Trigger the authentication flow
   final googleSignIn = GoogleSignIn();
   GoogleSignInAccount? _user;
@@ -148,6 +123,37 @@ class GoogleSignInProvider extends ChangeNotifier {
     }
   }
 
+  Future usersData(String name, String datatext) async {
+    final brewCollection = FirebaseFirestore.instance.collection('users');
+    final fuser = FirebaseAuth.instance;
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('kk:mm:ss  EEE d MMM').format(now);
+    return await brewCollection.doc(fuser.currentUser!.uid).set({
+      'Name': name,
+      'Datatext': datatext,
+      'timestamp': formattedDate,
+    });
+  }
+
+  Future studentsData(
+      String name, String email, String birthDay, String notes) async {
+    final rewCollection = FirebaseFirestore.instance.collection('peter');
+    final fuser = FirebaseAuth.instance;
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('kk:mm:ss  EEE d MMM').format(now);
+    return await rewCollection
+        .doc(fuser.currentUser!.uid)
+        .collection('students')
+        .add(<String, dynamic>{
+      'name': name,
+      'timestamp': formattedDate,
+      'email': email,
+      'birthDay': birthDay,
+      'note': notes,
+      'userId': FirebaseAuth.instance.currentUser!.uid.toUpperCase(),
+    });
+  }
+
   // Register user Email and Password
   Future<void> registerAccount({
     required String email,
@@ -202,7 +208,7 @@ class LoggedIn extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
+          children: const [
             // TextButton(
             //   onPressed: () {},
             //   child: Text(user!.displayName ?? ''),

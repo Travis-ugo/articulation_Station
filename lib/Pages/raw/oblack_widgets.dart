@@ -59,23 +59,26 @@ class LButton extends StatelessWidget {
 }
 
 class DButton extends StatelessWidget {
-  const DButton({Key? key}) : super(key: key);
+  final Function()? onTap;
+  const DButton({Key? key, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(100),
-      child: Container(
-        height: 45,
-        width: 45,
-        color: const Color(0xFF00FF0C),
-        child: const Center(
-            child: Text(
-          'Done',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        )),
+      child: InkWell(onTap: onTap,
+        child: Container(
+          height: 45,
+          width: 45,
+          color: const Color(0xFF00FF0C),
+          child: const Center(
+              child: Text(
+            'Done',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          )),
+        ),
       ),
     );
   }
@@ -103,6 +106,7 @@ Widget freeFrame(
     width: width,
     decoration: BoxDecoration(
       color: kolor.primaryColor,
+       borderRadius: BorderRadius.circular(5),
       border: Border.all(
         width: 25,
         color: kolor.borderColor,

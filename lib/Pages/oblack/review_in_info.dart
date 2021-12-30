@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CommentReview extends StatelessWidget {
@@ -31,6 +30,10 @@ class CommentReview extends StatelessWidget {
             Container(
               height: 40,
               width: 300,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5),
+              ),
               color: Colors.white,
               child: TextFormField(
                 autocorrect: false,
@@ -49,11 +52,14 @@ class CommentReview extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               height: 80,
               width: 300,
-              color: Colors.white,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5),
+              ),
               child: TextFormField(
                 autocorrect: false,
                 controller: commentController,

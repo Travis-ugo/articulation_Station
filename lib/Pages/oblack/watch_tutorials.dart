@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:oblack_tech/Pages/oblack/review.dart';
+import 'package:oblack_tech/Pages/oblack/review_in_info.dart';
 import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
 import 'package:oblack_tech/Pages/raw/three_buttons.dart';
-
 import 'credit_in_overview.dart';
 
 class WatchTutorials extends StatelessWidget {
@@ -77,6 +76,7 @@ class _ContainState extends State<Contain> {
                       WatchTutorials(),
                       CreditOverView(),
                       Review(),
+                      CommentReview()
                     ],
                   ),
                 ),

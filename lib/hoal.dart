@@ -11,11 +11,11 @@ class Clind extends StatelessWidget {
     final firstController = TextEditingController();
     final secondController = TextEditingController();
     final formKey = GlobalKey<FormState>(debugLabel: 'formState');
-    //  Stream<QuerySnapshot> users = FirebaseFirestore.instance
-    //   .collection('callers')
-    //   .doc()//widget.subCollection
-    //   .collection('call')
-    //   .snapshots();
+      //  Stream<QuerySnapshot> users = FirebaseFirestore.instance
+      //   .collection('callers')
+      //   .doc()//widget.subCollection
+      //   .collection('call')
+      //   .snapshots();
     return Scaffold(
       body: Form(
         key: formKey,
@@ -59,15 +59,12 @@ class Clind extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 if (formKey.currentState!.validate()) {
-                  provider.studentsData(
-                    firstController.text,
-                    secondController.text,
-                  );
+                  // provider.studentsData(firstController.text, secondController.text,);
                 }
               },
               child: const Text('submit'),
             ),
-            ElevatedButton(
+             ElevatedButton(
               onPressed: () async {
                 if (formKey.currentState!.validate()) {
                   provider.logOut();

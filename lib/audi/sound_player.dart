@@ -9,9 +9,11 @@ class SoundPlayer {
   bool get isPlaying => _audioPlayer!.isPlaying;
 
   Future _play(VoidCallback? whenFinished) async {
+    _audioPlayer!.seekToPlayer(const Duration(seconds: 20));
     await _audioPlayer!.startPlayer(
       whenFinished: whenFinished,
-      fromURI: pathToSaveAudio,
+      fromURI:
+          'https://firebasestorage.googleapis.com/v0/b/oblack123.appspot.com/o/Audio%20FIles%2FB1-%20Sentences-%20Man.mp3?alt=media&token=baeb0166-d0fa-4f3c-997f-77cb204b481f',
     );
   }
 
