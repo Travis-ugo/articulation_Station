@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:oblack_tech/Pages/raw/sound_button.dart';
-import 'package:oblack_tech/Repo/google_signin.dart';
+import 'package:oblack_tech/Repo/authService.dart';
 import 'package:provider/provider.dart';
 
 class HomeTry extends StatelessWidget {
@@ -18,7 +18,7 @@ class HomeTry extends StatelessWidget {
           TextButton(
             onPressed: () {
               final rovider =
-                  Provider.of<GoogleSignInProvider>(context, listen: false);
+                  Provider.of<FireBaseAuthService>(context, listen: false);
               rovider.logOut();
             },
             child: const Text(

@@ -7,7 +7,7 @@ import 'package:oblack_tech/Pages/raw/oblack_widgets.dart';
 import 'package:oblack_tech/Pages/raw/selected_multi_user.dart';
 import 'package:oblack_tech/Pages/raw/sound_button.dart';
 import 'package:oblack_tech/Pages/raw/user_clipboard.dart';
-import 'package:oblack_tech/Repo/google_signin.dart';
+import 'package:oblack_tech/Repo/authService.dart';
 import 'package:provider/provider.dart';
 
 class HomeGroup extends StatelessWidget {
@@ -58,9 +58,9 @@ class HomeGroup extends StatelessWidget {
                           const SizedBox(width: 15),
                           LButton(
                             onTap: () {
-                              final provider =
-                                  Provider.of<GoogleSignInProvider>(context,
-                                      listen: false);
+                              final provider = Provider.of<FireBaseAuthService>(
+                                  context,
+                                  listen: false);
                               provider.logOut();
                             },
                             text: 'Store',

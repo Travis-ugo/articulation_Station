@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'authentication/widget.dart';
-import 'google_signin.dart';
+import 'authService.dart';
 
 class SignInOblack extends HookWidget {
   const SignInOblack({
@@ -92,7 +92,7 @@ class FormWidget extends StatelessWidget {
     final _signInController = TextEditingController();
     final _signInPassWordController = TextEditingController();
 
-    final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+    final provider = Provider.of<FireBaseAuthService>(context, listen: false);
     final sizedBox = MediaQuery.of(context).size;
     return Form(
       key: _formKey,

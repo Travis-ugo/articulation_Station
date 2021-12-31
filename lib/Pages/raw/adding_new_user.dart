@@ -3,7 +3,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:oblack_tech/Pages/raw/three_buttons.dart';
 import 'package:oblack_tech/Repo/authentication/widget.dart';
-import 'package:oblack_tech/Repo/google_signin.dart';
+import 'package:oblack_tech/Repo/authService.dart';
 import 'package:provider/provider.dart';
 import 'oblack_widgets.dart';
 
@@ -27,7 +27,7 @@ class _NewUsersState extends State<NewUsers> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+    final provider = Provider.of<FireBaseAuthService>(context, listen: false);
     final formKey = GlobalKey<FormState>(debugLabel: 'formState');
     final _nameController = TextEditingController();
     final _emailController = TextEditingController();
@@ -171,8 +171,8 @@ class _NewUsersState extends State<NewUsers> {
                       provider.studentsData(
                         _nameController.text,
                         _emailController.text,
-                        _birthdayController.text,
-                        _notesController.text,
+                        // _birthdayController.text,
+                        // _notesController.text,
                       );
                     }
                   }),

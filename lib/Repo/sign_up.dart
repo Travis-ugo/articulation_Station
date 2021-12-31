@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'authentication/widget.dart';
-import 'google_signin.dart';
+import 'authService.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({
@@ -121,7 +121,7 @@ class _FormWidget extends StatelessWidget {
                   icon: FontAwesomeIcons.google,
                   iconColor: const Color(0xFFB20000),
                   onTap: () {
-                    final provider = Provider.of<GoogleSignInProvider>(context,
+                    final provider = Provider.of<FireBaseAuthService>(context,
                         listen: false);
                     provider.googleLogin();
                   },
@@ -189,7 +189,7 @@ class _FormWidget extends StatelessWidget {
               context: context,
               onTap: () async {
                 final provider =
-                    Provider.of<GoogleSignInProvider>(context, listen: false);
+                    Provider.of<FireBaseAuthService>(context, listen: false);
                 provider.registerAccount(
                   displayName: _displayNameController.text,
                   email: _emailController.text,

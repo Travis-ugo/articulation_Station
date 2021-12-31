@@ -25,7 +25,7 @@ class GoogleSign extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: () {
                 final provider =
-                    Provider.of<GoogleSignInProvider>(context, listen: false);
+                    Provider.of<FireBaseAuthService>(context, listen: false);
                 provider.googleLogin();
               },
               icon: const FaIcon(
@@ -41,7 +41,7 @@ class GoogleSign extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: () {
                 // final provider =
-                //     Provider.of<GoogleSignInProvider>(context, listen: false);
+                //     Provider.of<FireBaseAuthService>(context, listen: false);
                 // provider.signInWithApple();
               },
               icon: const FaIcon(
@@ -66,7 +66,7 @@ class GoogleSign extends StatelessWidget {
   }
 }
 
-class GoogleSignInProvider extends ChangeNotifier {
+class FireBaseAuthService extends ChangeNotifier {
   // Trigger the authentication flow
   final googleSignIn = GoogleSignIn();
   GoogleSignInAccount? _user;
@@ -136,7 +136,10 @@ class GoogleSignInProvider extends ChangeNotifier {
   }
 
   Future studentsData(
-      String name, String email, String birthDay, String notes) async {
+    String name,
+    String email,
+    /*String birthDay, String notes*/
+  ) async {
     final rewCollection = FirebaseFirestore.instance.collection('peter');
     final fuser = FirebaseAuth.instance;
     DateTime now = DateTime.now();
@@ -148,8 +151,8 @@ class GoogleSignInProvider extends ChangeNotifier {
       'name': name,
       'timestamp': formattedDate,
       'email': email,
-      'birthDay': birthDay,
-      'note': notes,
+      // 'birthDay': birthDay,
+      // 'note': notes,
       'userId': FirebaseAuth.instance.currentUser!.uid.toUpperCase(),
     });
   }
@@ -195,7 +198,7 @@ class LoggedIn extends StatelessWidget {
           TextButton(
             onPressed: () {
               final provider =
-                  Provider.of<GoogleSignInProvider>(context, listen: false);
+                  Provider.of<FireBaseAuthService>(context, listen: false);
               provider.logOut();
             },
             child: const Text(

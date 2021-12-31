@@ -1,9 +1,0 @@
-user {
-    many teachers {
-        many studenst{
-            studenst info{
-                students scores and audio recording.
-            }
-        }
-    }
-}

@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'Repo/google_signin.dart';
+import 'Repo/authService.dart';
 
 class Clind extends StatelessWidget {
   const Clind({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+    final provider = Provider.of<FireBaseAuthService>(context, listen: false);
     final firstController = TextEditingController();
     final secondController = TextEditingController();
     final formKey = GlobalKey<FormState>(debugLabel: 'formState');
-      //  Stream<QuerySnapshot> users = FirebaseFirestore.instance
-      //   .collection('callers')
-      //   .doc()//widget.subCollection
-      //   .collection('call')
-      //   .snapshots();
+    //  Stream<QuerySnapshot> users = FirebaseFirestore.instance
+    //   .collection('callers')
+    //   .doc()//widget.subCollection
+    //   .collection('call')
+    //   .snapshots();
     return Scaffold(
       body: Form(
         key: formKey,
@@ -59,12 +59,15 @@ class Clind extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 if (formKey.currentState!.validate()) {
-                  // provider.studentsData(firstController.text, secondController.text,);
+                  provider.studentsData(
+                    firstController.text,
+                    secondController.text,
+                  );
                 }
               },
               child: const Text('submit'),
             ),
-             ElevatedButton(
+            ElevatedButton(
               onPressed: () async {
                 if (formKey.currentState!.validate()) {
                   provider.logOut();
