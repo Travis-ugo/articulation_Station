@@ -8,12 +8,15 @@ class SoundPlayer {
 
   bool get isPlaying => _audioPlayer!.isPlaying;
 
-  Future _play(VoidCallback? whenFinished) async {
-    _audioPlayer!.seekToPlayer(const Duration(seconds: 20));
+  Future _play(
+      {VoidCallback? whenFinished,
+      required String soundURL,
+      required double timeStamp}) async {
+    _audioPlayer!.seekToPlayer(Duration(seconds: timeStamp.toInt()));
     await _audioPlayer!.startPlayer(
       whenFinished: whenFinished,
-      fromURI:
-          'https://firebasestorage.googleapis.com/v0/b/oblack123.appspot.com/o/Audio%20FIles%2FB1-%20Sentences-%20Man.mp3?alt=media&token=baeb0166-d0fa-4f3c-997f-77cb204b481f',
+      fromURI: soundURL,
+      // 'https://firebasestorage.googleapis.com/v0/b/oblack123.appspot.com/o/Audio%20FIles%2FB1-%20Sentences-%20Man.mp3?alt=media&token=baeb0166-d0fa-4f3c-997f-77cb204b481f',
     );
   }
 
@@ -21,9 +24,13 @@ class SoundPlayer {
     await _audioPlayer!.stopPlayer();
   }
 
-  Future twitchPlayer({required VoidCallback? whenFinished}) async {
+  Future twitchPlayer(
+      {required VoidCallback? whenFinished,
+      required String soundURL,
+      required double timeStamp}) async {
     if (_audioPlayer!.isStopped) {
-      await _play(whenFinished);
+      await _play(
+          whenFinished: whenFinished, soundURL: soundURL, timeStamp: timeStamp);
     } else {
       await _stop();
     }

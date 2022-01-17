@@ -4,7 +4,15 @@ import 'sound_player.dart';
 import 'sound_recoder.dart';
 
 class AudioRecorder extends StatefulWidget {
-  const AudioRecorder({Key? key}) : super(key: key);
+  final String text;
+  final String soundURL;
+  final double timeStamp;
+  const AudioRecorder({
+    Key? key,
+    required this.text,
+    required this.soundURL,
+    required this.timeStamp,
+  }) : super(key: key);
 
   @override
   _AudioRecorderState createState() => _AudioRecorderState();
@@ -31,22 +39,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CircleAvatar(
-              backgroundColor: Colors.blueAccent,
-              radius: 50,
-              child: TimerWidget(controller: timeController),
-            ),
-            audioStart(),
-            play(),
-          ],
-        ),
-      ),
-    );
+    return play();
   }
 
   Widget play() {
@@ -58,18 +51,18 @@ class _AudioRecorderState extends State<AudioRecorder> {
 
     final Color primary = isPlaying ? Colors.redAccent : Colors.blueAccent;
 
-    return ElevatedButton.icon(
-      style: ElevatedButton.styleFrom(
-        minimumSize: const Size(175, 50),
-        primary: primary,
-        onPrimary: Colors.white,
-      ),
+    return TextButton(
+      child: Text(widget.text),
       onPressed: () async {
-        await player.twitchPlayer(whenFinished: () => setState(() {}));
+        await player.twitchPlayer(
+            whenFinished: () => setState(() {}),
+            soundURL: widget.soundURL,
+            // 'https://firebasestorage.googleapis.com/v0/b/oblack123.appspot.com/o/Audio%20FIles%2FB1-%20Sentences-%20Man.mp3?alt=media&token=baeb0166-d0fa-4f3c-997f-77cb204b481f',
+            timeStamp: widget.timeStamp);
         setState(() {});
       },
-      icon: Icon(icon),
-      label: Text(text),
+      // icon: Icon(icon),
+      // label: Text(text),
     );
   }
 
