@@ -1,5 +1,5 @@
 import 'package:flutter_sound_lite/public/flutter_sound_recorder.dart';
-import 'package:oblack_tech/audi/timer.dart';
+import 'package:oblack_tech/Audio%20File/timer.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 const pathToSaveAudio = 'audio_example.aac';
